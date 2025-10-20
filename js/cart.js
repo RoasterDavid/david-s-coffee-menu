@@ -203,8 +203,18 @@ function showPaymentModal() {
         return;
     }
     
+    // 받는 사람 정보 확인
+    const recipientName = document.getElementById('recipientName').value.trim();
+    const recipientPhone = document.getElementById('recipientPhone').value.trim();
+    const recipientAddress = document.getElementById('recipientAddress').value.trim();
+    
+    if (!recipientName || !recipientPhone || !recipientAddress) {
+        showNotification('받는 사람 정보를 모두 입력해주세요.');
+        return;
+    }
+    
     // 주문 내역 생성
-    const orderDetails = generateOrderDetails();
+    const orderDetails = generateOrderDetails(recipientName, recipientPhone, recipientAddress);
     
     // 주문 내역을 모달에 표시
     const orderDetailsBox = document.getElementById('orderDetailsBox');
@@ -271,6 +281,11 @@ function confirmOrder() {
     updateCartUI();
     saveCart();
     
+    // 받는 사람 정보 초기화
+    document.getElementById('recipientName').value = '';
+    document.getElementById('recipientPhone').value = '';
+    document.getElementById('recipientAddress').value = '';
+    
     // 모달 닫기
     closeOrderModal();
     
@@ -279,7 +294,7 @@ function confirmOrder() {
 }
 
 // 주문 내역 생성
-function generateOrderDetails() {
+function generateOrderDetails(recipientName, recipientPhone, recipientAddress) {
     const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
     const orderDate = new Date().toLocaleString('ko-KR', {
@@ -292,6 +307,13 @@ function generateOrderDetails() {
     
     let orderText = `☕ David's Coffee 주문서\n\n`;
     orderText += `📅 주문 일시: ${orderDate}\n\n`;
+    
+    orderText += `👤 받는 사람 정보:\n`;
+    orderText += `━━━━━━━━━━━━━━━━━━━━\n`;
+    orderText += `이름: ${recipientName}\n`;
+    orderText += `전화번호: ${recipientPhone}\n`;
+    orderText += `주소: ${recipientAddress}\n\n`;
+    
     orderText += `📋 주문 내역:\n`;
     orderText += `━━━━━━━━━━━━━━━━━━━━\n`;
     
