@@ -53,7 +53,10 @@ function createProductCard(product, type) {
             ${badgeHTML}
             <div class="product-header">
                 <div class="product-icon">${product.icon}</div>
-                <div class="product-name">${product.name}</div>
+                <div class="product-info">
+                    <div class="product-name">${product.name}</div>
+                    <div class="product-description">${product.description}</div>
+                </div>
             </div>
             <div class="product-body">
                 <div class="product-options">
