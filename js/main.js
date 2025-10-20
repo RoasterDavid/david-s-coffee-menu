@@ -139,29 +139,19 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProducts();
     
     // 모달 외부 클릭 시 닫기
-    const paymentModal = document.getElementById('paymentModal');
-    const successModal = document.getElementById('successModal');
+    const orderModal = document.getElementById('orderModal');
     
-    paymentModal.addEventListener('click', (e) => {
-        if (e.target === paymentModal) {
-            closePaymentModal();
-        }
-    });
-    
-    successModal.addEventListener('click', (e) => {
-        if (e.target === successModal) {
-            closeSuccessModal();
+    orderModal.addEventListener('click', (e) => {
+        if (e.target === orderModal) {
+            closeOrderModal();
         }
     });
     
     // ESC 키로 모달 닫기
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            if (paymentModal.classList.contains('active')) {
-                closePaymentModal();
-            }
-            if (successModal.classList.contains('active')) {
-                closeSuccessModal();
+            if (orderModal.classList.contains('active')) {
+                closeOrderModal();
             }
             if (document.getElementById('cartSidebar').classList.contains('active')) {
                 toggleCart();
