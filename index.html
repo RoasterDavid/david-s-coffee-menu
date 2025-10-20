@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>David's Coffee - 주문하기</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">☕ David's Coffee</div>
+            <div class="cart-icon" onclick="toggleCart()">
+                🛒
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 탭 네비게이션 -->
+    <nav class="tabs">
+        <button class="tab-btn active" onclick="switchTab('beans')">원두</button>
+        <button class="tab-btn" onclick="switchTab('drip')">드립백</button>
+    </nav>
+
+    <!-- 원두 섹션 -->
+    <section id="beans-section" class="products-section active">
+        <div class="container">
+            <div class="products-grid" id="beansProducts"></div>
+        </div>
+    </section>
+
+    <!-- 드립백 섹션 -->
+    <section id="drip-section" class="products-section">
+        <div class="container">
+            <div class="products-grid" id="dripProducts"></div>
+        </div>
+    </section>
+
+    <!-- 장바구니 사이드바 -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>장바구니</h2>
+            <button class="close-btn" onclick="toggleCart()">✕</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="empty-cart">
+                <p>🛒</p>
+                <p>장바구니가 비어있습니다</p>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>총 금액</span>
+                <span class="total-price" id="totalPrice">¥0</span>
+            </div>
+            <button class="order-btn" onclick="showPaymentModal()">주문하기</button>
+        </div>
+    </div>
+
+    <!-- 배경 오버레이 -->
+    <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+
+    <!-- 결제 정보 모달 -->
+    <div class="modal" id="paymentModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closePaymentModal()">✕</button>
+            <h2>결제 정보</h2>
+            <div class="payment-info">
+                <p class="payment-instruction">위챗페이로 결제해주세요</p>
+                <div class="qr-container">
+                    <img src="https://page.gensparksite.com/v1/base64_upload/df5d63bee822190c84d950e896710805" alt="위챗페이 QR코드" class="qr-code">
+                </div>
+                <div class="payment-total">
+                    <span>결제 금액</span>
+                    <span class="amount" id="modalTotalPrice">¥0</span>
+                </div>
+                <p class="payment-note">결제 후 아래 버튼을 눌러 주문을 완료해주세요</p>
+            </div>
+            <button class="submit-order-btn" onclick="submitOrder()">주문 완료</button>
+        </div>
+    </div>
+
+    <!-- 주문 완료 모달 -->
+    <div class="modal" id="successModal">
+        <div class="modal-content success-content">
+            <div class="success-icon">✓</div>
+            <h2>주문이 완료되었습니다!</h2>
+            <p>주문 내역이 이메일로 발송되었습니다.</p>
+            <p class="success-note">빠른 시일 내에 배송해드리겠습니다.</p>
+            <button class="confirm-btn" onclick="closeSuccessModal()">확인</button>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
