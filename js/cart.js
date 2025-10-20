@@ -3,23 +3,26 @@ let cart = [];
 
 // 장바구니에 제품 추가
 function addToCart(productId, productName, option, price, type) {
-    const item = {
-        id: `${productId}-${option}`,
-        productId: productId,
-        name: productName,
-        option: option,
-        price: price,
-        type: type
-    };
-    
     // 이미 장바구니에 같은 상품이 있는지 확인
     const existingIndex = cart.findIndex(item => item.id === `${productId}-${option}`);
     
     if (existingIndex === -1) {
+        // 새 상품 추가
+        const item = {
+            id: `${productId}-${option}`,
+            productId: productId,
+            name: productName,
+            option: option,
+            price: price,
+            quantity: 1,
+            type: type
+        };
         cart.push(item);
         showNotification('장바구니에 담았습니다! 🛒');
     } else {
-        showNotification('이미 장바구니에 있는 상품입니다.');
+        // 기존 상품 수량 증가
+        cart[existingIndex].quantity += 1;
+        showNotification('수량이 추가되었습니다! 🛒');
     }
     
     updateCartUI();
@@ -39,17 +42,14 @@ function updateCartUI() {
     const cartItemsContainer = document.getElementById('cartItems');
     const cartCount = document.getElementById('cartCount');
     const totalPriceElement = document.getElementById('totalPrice');
-    const modalTotalPriceElement = document.getElementById('modalTotalPrice');
     
-    // 장바구니 개수 업데이트
-    cartCount.textContent = cart.length;
+    // 장바구니 총 상품 개수 계산 (수량 포함)
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCount.textContent = totalItems;
     
-    // 총 금액 계산
-    const totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
+    // 총 금액 계산 (가격 × 수량)
+    const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     totalPriceElement.textContent = `¥${totalPrice}`;
-    if (modalTotalPriceElement) {
-        modalTotalPriceElement.textContent = `¥${totalPrice}`;
-    }
     
     // 장바구니 아이템 렌더링
     if (cart.length === 0) {
@@ -68,10 +68,42 @@ function updateCartUI() {
                 </div>
                 <div class="cart-item-details">
                     <span class="cart-item-option">${item.option}</span>
-                    <span class="cart-item-price">¥${item.price}</span>
+                    <span class="cart-item-price">¥${item.price * item.quantity}</span>
+                </div>
+                <div class="cart-item-quantity">
+                    <button class="quantity-btn" onclick="decreaseQuantity('${item.id}')">-</button>
+                    <span class="quantity-value">${item.quantity}</span>
+                    <button class="quantity-btn" onclick="increaseQuantity('${item.id}')">+</button>
                 </div>
             </div>
         `).join('');
+    }
+}
+
+// 수량 증가
+function increaseQuantity(itemId) {
+    const item = cart.find(item => item.id === itemId);
+    if (item) {
+        item.quantity += 1;
+        updateCartUI();
+        saveCart();
+    }
+}
+
+// 수량 감소
+function decreaseQuantity(itemId) {
+    const item = cart.find(item => item.id === itemId);
+    if (item) {
+        if (item.quantity > 1) {
+            item.quantity -= 1;
+            updateCartUI();
+            saveCart();
+        } else {
+            // 수량이 1일 때 감소하면 삭제 확인
+            if (confirm('상품을 장바구니에서 제거하시겠습니까?')) {
+                removeFromCart(itemId);
+            }
+        }
     }
 }
 
@@ -248,7 +280,8 @@ function confirmOrder() {
 
 // 주문 내역 생성
 function generateOrderDetails() {
-    const totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
+    const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
     const orderDate = new Date().toLocaleString('ko-KR', {
         year: 'numeric',
         month: '2-digit',
@@ -263,12 +296,14 @@ function generateOrderDetails() {
     orderText += `━━━━━━━━━━━━━━━━━━━━\n`;
     
     cart.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
         orderText += `${index + 1}. ${item.name}\n`;
-        orderText += `   📦 ${item.option}\n`;
-        orderText += `   💰 ¥${item.price}\n\n`;
+        orderText += `   📦 ${item.option} × ${item.quantity}개\n`;
+        orderText += `   💰 ¥${item.price} × ${item.quantity} = ¥${itemTotal}\n\n`;
     });
     
     orderText += `━━━━━━━━━━━━━━━━━━━━\n`;
+    orderText += `📊 총 수량: ${totalQuantity}개\n`;
     orderText += `💵 총 금액: ¥${totalPrice}\n`;
     
     return orderText;
