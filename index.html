@@ -65,34 +65,22 @@
     <!-- 배경 오버레이 -->
     <div class="overlay" id="overlay" onclick="toggleCart()"></div>
 
-    <!-- 결제 정보 모달 -->
-    <div class="modal" id="paymentModal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closePaymentModal()">✕</button>
-            <h2>결제 정보</h2>
-            <div class="payment-info">
-                <p class="payment-instruction">위챗페이로 결제해주세요</p>
-                <div class="qr-container">
-                    <img src="https://page.gensparksite.com/v1/base64_upload/df5d63bee822190c84d950e896710805" alt="위챗페이 QR코드" class="qr-code">
+    <!-- 주문 내역 모달 -->
+    <div class="modal" id="orderModal">
+        <div class="modal-content order-modal-content">
+            <button class="modal-close" onclick="closeOrderModal()">✕</button>
+            <h2>📋 주문 내역</h2>
+            <div class="order-info">
+                <p class="order-instruction">아래 주문 내역을 복사해서 위챗으로 보내주세요</p>
+                <div class="order-details-box" id="orderDetailsBox">
+                    <!-- 주문 내역이 여기에 표시됩니다 -->
                 </div>
-                <div class="payment-total">
-                    <span>결제 금액</span>
-                    <span class="amount" id="modalTotalPrice">¥0</span>
-                </div>
-                <p class="payment-note">결제 후 아래 버튼을 눌러 주문을 완료해주세요</p>
+                <button class="copy-btn" onclick="copyOrderDetails()">
+                    📋 주문 내역 복사하기
+                </button>
+                <p class="wechat-note">복사 후 위챗에서 <strong>David</strong>에게 보내주세요</p>
             </div>
-            <button class="submit-order-btn" onclick="submitOrder()">주문 완료</button>
-        </div>
-    </div>
-
-    <!-- 주문 완료 모달 -->
-    <div class="modal" id="successModal">
-        <div class="modal-content success-content">
-            <div class="success-icon">✓</div>
-            <h2>주문이 완료되었습니다!</h2>
-            <p>주문 내역이 이메일로 발송되었습니다.</p>
-            <p class="success-note">빠른 시일 내에 배송해드리겠습니다.</p>
-            <button class="confirm-btn" onclick="closeSuccessModal()">확인</button>
+            <button class="confirm-order-btn" onclick="confirmOrder()">확인</button>
         </div>
     </div>
 
