@@ -134,7 +134,7 @@ body {
 .products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
+    gap: 15px;
 }
 
 /* 제품 카드 */
@@ -175,29 +175,40 @@ body {
 
 .product-header {
     background: linear-gradient(135deg, var(--warm-beige) 0%, var(--cream) 100%);
-    padding: 20px;
-    text-align: center;
-    min-height: 100px;
+    padding: 15px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    gap: 12px;
 }
 
 .product-icon {
-    font-size: 40px;
-    margin-bottom: 10px;
+    font-size: 32px;
+    flex-shrink: 0;
+}
+
+.product-info {
+    flex: 1;
+    text-align: left;
 }
 
 .product-name {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     color: var(--dark-brown);
+    line-height: 1.3;
+    word-break: keep-all;
+    margin-bottom: 4px;
+}
+
+.product-description {
+    font-size: 11px;
+    color: #666;
     line-height: 1.4;
     word-break: keep-all;
 }
 
 .product-body {
-    padding: 20px;
+    padding: 15px;
 }
 
 .product-options {
@@ -210,7 +221,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px;
+    padding: 10px 12px;
     background: var(--ivory);
     border-radius: 8px;
     cursor: pointer;
@@ -228,26 +239,26 @@ body {
 }
 
 .option-label {
-    font-size: 14px;
+    font-size: 13px;
     color: var(--text-dark);
     font-weight: 500;
 }
 
 .option-price {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
     color: var(--primary-brown);
 }
 
 .add-to-cart-btn {
     width: 100%;
-    margin-top: 15px;
-    padding: 14px;
+    margin-top: 12px;
+    padding: 12px;
     background: linear-gradient(135deg, var(--primary-brown) 0%, var(--dark-brown) 100%);
     color: white;
     border: none;
-    border-radius: 10px;
-    font-size: 16px;
+    border-radius: 8px;
+    font-size: 14px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
@@ -495,109 +506,77 @@ body {
     text-align: center;
 }
 
-.payment-info {
+/* 주문 내역 모달 */
+.order-modal-content {
+    max-width: 550px;
+}
+
+.order-info {
     text-align: center;
 }
 
-.payment-instruction {
-    font-size: 16px;
+.order-instruction {
+    font-size: 15px;
     color: var(--text-dark);
     margin-bottom: 20px;
     font-weight: 500;
+    line-height: 1.5;
 }
 
-.qr-container {
-    background: white;
+.order-details-box {
+    background: var(--ivory);
+    border: 2px solid var(--warm-beige);
+    border-radius: 12px;
     padding: 20px;
-    border-radius: 15px;
-    display: inline-block;
-    box-shadow: 0 4px 15px var(--shadow);
     margin-bottom: 20px;
+    text-align: left;
+    max-height: 400px;
+    overflow-y: auto;
 }
 
-.qr-code {
-    width: 200px;
-    height: 200px;
-    display: block;
-}
-
-.payment-total {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 15px;
+.order-text {
+    font-family: 'Noto Sans KR', monospace;
+    font-size: 13px;
+    line-height: 1.8;
     color: var(--text-dark);
+    white-space: pre-wrap;
+    word-break: break-word;
+    margin: 0;
 }
 
-.payment-total .amount {
-    font-size: 28px;
+.copy-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #51cf66, #37b24d);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 15px;
+}
+
+.copy-btn:active {
+    transform: scale(0.98);
+}
+
+.wechat-note {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.wechat-note strong {
     color: var(--primary-brown);
     font-weight: 700;
 }
 
-.payment-note {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 20px;
-    line-height: 1.6;
-}
-
-.submit-order-btn {
+.confirm-order-btn {
     width: 100%;
-    padding: 16px;
-    background: linear-gradient(135deg, var(--primary-brown) 0%, var(--dark-brown) 100%);
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 18px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.submit-order-btn:active {
-    transform: scale(0.98);
-}
-
-/* 주문 완료 모달 */
-.success-content {
-    text-align: center;
-}
-
-.success-icon {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #51cf66, #37b24d);
-    color: white;
-    font-size: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 20px;
-}
-
-.success-content h2 {
-    color: var(--dark-brown);
-    margin-bottom: 15px;
-}
-
-.success-content p {
-    color: #666;
-    margin-bottom: 10px;
-    line-height: 1.6;
-}
-
-.success-note {
-    font-size: 14px;
-    margin-bottom: 25px !important;
-}
-
-.confirm-btn {
-    padding: 14px 40px;
+    padding: 14px;
     background: var(--primary-brown);
     color: white;
     border: none;
@@ -608,7 +587,7 @@ body {
     transition: all 0.3s;
 }
 
-.confirm-btn:active {
+.confirm-order-btn:active {
     transform: scale(0.98);
 }
 
