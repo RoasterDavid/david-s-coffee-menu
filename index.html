@@ -54,6 +54,14 @@
             </div>
         </div>
         <div class="cart-footer">
+            <div class="recipient-info-section">
+                <h3 class="recipient-title">📦 받는 사람 정보</h3>
+                <div class="recipient-form">
+                    <input type="text" id="recipientName" class="recipient-input" placeholder="이름" />
+                    <input type="tel" id="recipientPhone" class="recipient-input" placeholder="전화번호" />
+                    <textarea id="recipientAddress" class="recipient-input recipient-textarea" placeholder="주소" rows="2"></textarea>
+                </div>
+            </div>
             <div class="cart-total">
                 <span>총 금액</span>
                 <span class="total-price" id="totalPrice">¥0</span>
@@ -71,16 +79,16 @@
             <button class="modal-close" onclick="closeOrderModal()">✕</button>
             <h2>📋 주문 내역</h2>
             <div class="order-info">
-                <p class="order-instruction">아래 주문 내역을 복사해서 위챗으로 보내주세요</p>
                 <div class="order-details-box" id="orderDetailsBox">
                     <!-- 주문 내역이 여기에 표시됩니다 -->
                 </div>
-                <button class="copy-btn" onclick="copyOrderDetails()">
-                    📋 주문 내역 복사하기
+                <button class="copy-btn-large" onclick="copyOrderDetails()">
+                    <span class="copy-icon">📋</span>
+                    <span class="copy-text">위챗으로 보내기 (복사)</span>
                 </button>
-                <p class="wechat-note">복사 후 위챗에서 <strong>David</strong>에게 보내주세요</p>
+                <p class="wechat-note">위 버튼을 누르면 주문 내역이 자동으로 복사됩니다.<br>위챗에서 <strong>David</strong>에게 붙여넣기 해주세요!</p>
             </div>
-            <button class="confirm-order-btn" onclick="confirmOrder()">확인</button>
+            <button class="confirm-order-btn" onclick="confirmOrder()">닫기</button>
         </div>
     </div>
 
