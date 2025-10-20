@@ -47,26 +47,36 @@
             <h2>장바구니</h2>
             <button class="close-btn" onclick="toggleCart()">✕</button>
         </div>
-        <div class="cart-items" id="cartItems">
-            <div class="empty-cart">
-                <p>🛒</p>
-                <p>장바구니가 비어있습니다</p>
-            </div>
-        </div>
-        <div class="cart-footer">
-            <div class="recipient-info-section">
-                <h3 class="recipient-title">📦 받는 사람 정보</h3>
-                <div class="recipient-form">
-                    <input type="text" id="recipientName" class="recipient-input" placeholder="이름" />
-                    <input type="tel" id="recipientPhone" class="recipient-input" placeholder="전화번호" />
-                    <textarea id="recipientAddress" class="recipient-input recipient-textarea" placeholder="주소" rows="2"></textarea>
+        <div class="cart-content">
+            <div class="cart-items" id="cartItems">
+                <div class="empty-cart">
+                    <p>🛒</p>
+                    <p>장바구니가 비어있습니다</p>
                 </div>
             </div>
-            <div class="cart-total">
-                <span>총 금액</span>
-                <span class="total-price" id="totalPrice">¥0</span>
+            <div class="cart-footer">
+                <div class="recipient-info-section">
+                    <h3 class="recipient-title">📦 받는 사람 정보</h3>
+                    <div class="recipient-form">
+                        <input type="text" id="recipientName" class="recipient-input" placeholder="이름" />
+                        <input type="tel" id="recipientPhone" class="recipient-input" placeholder="전화번호" />
+                        <textarea id="recipientAddress" class="recipient-input recipient-textarea" placeholder="주소" rows="2"></textarea>
+                    </div>
+                </div>
+                <div class="shipping-info-section">
+                    <p class="shipping-info-text">
+                        🚚 모든 제품은 <strong>SF(순풍)</strong>을 이용해 배송됩니다.<br>
+                        상해 전지역은 제품가격에 <strong>6위안</strong>이 추가되며<br>
+                        기타 지역은 <strong>10위안</strong>이 추가됩니다.<br>
+                        💝 <strong>200위안</strong> 이상 구매 시 <strong>무료 배송</strong>!
+                    </p>
+                </div>
+                <div class="cart-total">
+                    <span>총 금액</span>
+                    <span class="total-price" id="totalPrice">¥0</span>
+                </div>
+                <button class="order-btn" onclick="showPaymentModal()">주문하기</button>
             </div>
-            <button class="order-btn" onclick="showPaymentModal()">주문하기</button>
         </div>
     </div>
 
