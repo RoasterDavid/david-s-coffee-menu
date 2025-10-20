@@ -51,11 +51,21 @@ body {
 }
 
 .cart-icon {
-    font-size: 24px;
+    font-size: 32px;
     cursor: pointer;
     position: relative;
-    padding: 8px;
-    transition: transform 0.2s;
+    padding: 10px;
+    transition: all 0.3s;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-icon:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.05);
 }
 
 .cart-icon:active {
@@ -64,18 +74,30 @@ body {
 
 .cart-count {
     position: absolute;
-    top: 0;
-    right: 0;
-    background: #ff4444;
+    top: -2px;
+    right: -2px;
+    background: linear-gradient(135deg, #ff4444, #cc0000);
     color: white;
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
+    min-width: 24px;
+    height: 24px;
+    padding: 0 6px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(255, 68, 68, 0.4);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
 }
 
 /* 탭 네비게이션 */
@@ -444,6 +466,52 @@ body {
     background: white;
 }
 
+.recipient-info-section {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--warm-beige);
+}
+
+.recipient-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--dark-brown);
+    margin-bottom: 12px;
+}
+
+.recipient-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.recipient-input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--warm-beige);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: var(--text-dark);
+    transition: all 0.2s;
+}
+
+.recipient-input:focus {
+    outline: none;
+    border-color: var(--primary-brown);
+    background: var(--ivory);
+}
+
+.recipient-input::placeholder {
+    color: #999;
+}
+
+.recipient-textarea {
+    resize: vertical;
+    min-height: 60px;
+    line-height: 1.5;
+}
+
 .cart-total {
     display: flex;
     justify-content: space-between;
@@ -584,47 +652,72 @@ body {
     margin: 0;
 }
 
-.copy-btn {
+.copy-btn-large {
     width: 100%;
-    padding: 14px;
-    background: linear-gradient(135deg, #51cf66, #37b24d);
+    padding: 20px;
+    background: linear-gradient(135deg, #07C160, #06AE56);
     color: white;
     border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: 600;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.3s;
     margin-bottom: 15px;
+    box-shadow: 0 6px 20px rgba(7, 193, 96, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
-.copy-btn:active {
-    transform: scale(0.98);
+.copy-btn-large:hover {
+    background: linear-gradient(135deg, #06AE56, #059C4B);
+    box-shadow: 0 8px 25px rgba(7, 193, 96, 0.5);
+    transform: translateY(-2px);
+}
+
+.copy-btn-large:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.copy-icon {
+    font-size: 24px;
+}
+
+.copy-text {
+    font-size: 18px;
 }
 
 .wechat-note {
     font-size: 13px;
     color: #666;
     margin-bottom: 20px;
-    line-height: 1.6;
+    line-height: 1.8;
+    text-align: center;
 }
 
 .wechat-note strong {
-    color: var(--primary-brown);
+    color: #07C160;
     font-weight: 700;
 }
 
 .confirm-order-btn {
     width: 100%;
     padding: 14px;
-    background: var(--primary-brown);
-    color: white;
-    border: none;
+    background: #f5f5f5;
+    color: #666;
+    border: 2px solid #ddd;
     border-radius: 10px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
+}
+
+.confirm-order-btn:hover {
+    background: #e8e8e8;
+    border-color: #ccc;
 }
 
 .confirm-order-btn:active {
