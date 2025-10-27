@@ -142,10 +142,22 @@ body {
 .products-section {
     display: none;
     padding: 20px 0;
+    animation: fadeIn 0.3s ease-in-out;
 }
 
 .products-section.active {
     display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .container {
