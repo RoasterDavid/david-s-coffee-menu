@@ -32,24 +32,40 @@ function renderProducts() {
 
 // 제품 카드 HTML 생성
 function createProductCard(product, type) {
-    const badgeHTML = product.badge ? `
-        <div class="product-badge badge-${product.badge}">
-            ${product.badge === 'best' ? 'BEST' : 'NEW'}
-        </div>
-    ` : '';
+    // 품절 처리
+    const isSoldOut = product.soldOut === true;
+    const soldOutClass = isSoldOut ? 'sold-out' : '';
+    
+    // 배지 처리
+    let badgeHTML = '';
+    if (isSoldOut) {
+        badgeHTML = `
+            <div class="product-badge badge-soldout">
+                SEASON OUT
+            </div>
+        `;
+    } else if (product.badge) {
+        badgeHTML = `
+            <div class="product-badge badge-${product.badge}">
+                ${product.badge === 'best' ? 'BEST' : 'NEW'}
+            </div>
+        `;
+    }
     
     const optionsHTML = product.options.map((option, index) => `
         <div class="option-row" 
              data-product-id="${product.id}" 
              data-option-index="${index}"
-             onclick="selectOption('${product.id}', ${index}, '${type}')">
+             onclick="${isSoldOut ? '' : `selectOption('${product.id}', ${index}, '${type}')`}">
             <span class="option-label">${option.size}</span>
             <span class="option-price">¥${option.price}</span>
         </div>
     `).join('');
     
+    const buttonText = isSoldOut ? 'SEASON OUT' : '옵션을 선택하세요';
+    
     return `
-        <div class="product-card">
+        <div class="product-card ${soldOutClass}">
             ${badgeHTML}
             <div class="product-header">
                 <div class="product-icon">${product.icon}</div>
@@ -64,9 +80,8 @@ function createProductCard(product, type) {
                 </div>
                 <button class="add-to-cart-btn" 
                         id="add-btn-${product.id}"
-                        disabled
-                        onclick="addProductToCart('${product.id}', '${type}')">
-                    옵션을 선택하세요
+                        disabled>
+                    ${buttonText}
                 </button>
             </div>
         </div>
