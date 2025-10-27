@@ -6,7 +6,15 @@ function switchTab(tabName) {
     // 탭 버튼 활성화
     const tabButtons = document.querySelectorAll('.tab-btn');
     tabButtons.forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
+    
+    // 탭 이름으로 버튼 찾아서 활성화
+    const targetButton = tabName === 'beans' 
+        ? document.querySelector('.tab-btn[onclick*="beans"]')
+        : document.querySelector('.tab-btn[onclick*="drip"]');
+    
+    if (targetButton) {
+        targetButton.classList.add('active');
+    }
     
     // 섹션 표시/숨김
     const sections = document.querySelectorAll('.products-section');
@@ -16,6 +24,47 @@ function switchTab(tabName) {
         document.getElementById('beans-section').classList.add('active');
     } else if (tabName === 'drip') {
         document.getElementById('drip-section').classList.add('active');
+    }
+}
+
+// 현재 활성화된 탭 가져오기
+function getCurrentTab() {
+    const beansSection = document.getElementById('beans-section');
+    return beansSection.classList.contains('active') ? 'beans' : 'drip';
+}
+
+// 스와이프 제스처 감지
+let touchStartX = 0;
+let touchEndX = 0;
+let touchStartY = 0;
+let touchEndY = 0;
+
+function handleSwipeGesture() {
+    const swipeThreshold = 50; // 최소 스와이프 거리
+    const verticalThreshold = 30; // 수직 이동 허용 범위
+    
+    const horizontalDistance = touchEndX - touchStartX;
+    const verticalDistance = Math.abs(touchEndY - touchStartY);
+    
+    // 수직 스크롤이 너무 크면 스와이프로 인식하지 않음
+    if (verticalDistance > verticalThreshold) {
+        return;
+    }
+    
+    const currentTab = getCurrentTab();
+    
+    // 왼쪽으로 스와이프 (다음 탭)
+    if (horizontalDistance < -swipeThreshold) {
+        if (currentTab === 'beans') {
+            switchTab('drip');
+        }
+    }
+    
+    // 오른쪽으로 스와이프 (이전 탭)
+    if (horizontalDistance > swipeThreshold) {
+        if (currentTab === 'drip') {
+            switchTab('beans');
+        }
     }
 }
 
@@ -118,6 +167,7 @@ function createProductCard(product, type) {
                 </div>
                 <button class="add-to-cart-btn" 
                         id="add-btn-${product.id}"
+                        onclick="${isSoldOut ? '' : `addProductToCart('${product.id}', '${type}')`}"
                         disabled>
                     ${buttonText}
                 </button>
@@ -211,4 +261,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+    
+    // 스와이프 제스처 이벤트 리스너 추가
+    const container = document.querySelector('.container');
+    
+    container.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+    
+    container.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
+        handleSwipeGesture();
+    }, { passive: true });
 });
