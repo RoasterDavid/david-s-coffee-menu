@@ -28,6 +28,7 @@ const productsData = {
             name: '에티오피아 구지 아돌라 G1 Winey Natural',
             icon: '🍷',
             badge: 'best',
+            soldOut: true,
             description: '와인같은 깊은 풍미와 베리류의 달콤함',
             options: [
                 { size: '100g', price: 50 },
@@ -162,6 +163,7 @@ const productsData = {
             name: '에티오피아 구지 아돌라 G1',
             icon: '🍷',
             badge: 'best',
+            soldOut: true,
             description: '와인같은 깊은 풍미와 베리류의 달콤함',
             options: [
                 { size: '5개/박스', price: 50 },
