@@ -156,8 +156,8 @@ body {
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    grid-template-columns: 1fr;
+    gap: 15px;
 }
 
 /* 제품 카드 */
@@ -187,7 +187,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(-15deg);
-    font-size: 28px;
+    font-size: 36px;
     font-weight: 900;
     color: #ff0000;
     text-shadow: 
@@ -224,9 +224,9 @@ body {
     position: absolute;
     top: 8px;
     right: 8px;
-    padding: 4px 8px;
+    padding: 5px 10px;
     border-radius: 12px;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 600;
     z-index: 10;
 }
@@ -244,15 +244,15 @@ body {
 .badge-soldout {
     background: linear-gradient(135deg, #868e96, #495057);
     color: white;
-    font-size: 10px;
-    padding: 5px 8px;
+    font-size: 11px;
+    padding: 5px 10px;
 }
 
 .badge-almostsoldout {
     background: linear-gradient(135deg, #ff9800, #f57c00);
     color: white;
-    font-size: 10px;
-    padding: 5px 8px;
+    font-size: 11px;
+    padding: 5px 10px;
     animation: blink 1.5s infinite;
     right: 8px;
 }
@@ -280,14 +280,14 @@ body {
 
 .product-header {
     background: linear-gradient(135deg, var(--warm-beige) 0%, var(--cream) 100%);
-    padding: 10px;
+    padding: 12px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 }
 
 .product-icon {
-    font-size: 24px;
+    font-size: 28px;
     flex-shrink: 0;
 }
 
@@ -297,7 +297,7 @@ body {
 }
 
 .product-name {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
     color: var(--dark-brown);
     line-height: 1.3;
@@ -306,9 +306,9 @@ body {
 }
 
 .product-description {
-    font-size: 10px;
+    font-size: 11px;
     color: #666;
-    line-height: 1.3;
+    line-height: 1.4;
     word-break: keep-all;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -317,7 +317,7 @@ body {
 }
 
 .product-body {
-    padding: 10px;
+    padding: 12px;
 }
 
 .product-options {
@@ -348,13 +348,13 @@ body {
 }
 
 .option-label {
-    font-size: 11px;
+    font-size: 12px;
     color: var(--text-dark);
     font-weight: 500;
 }
 
 .option-price {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
     color: var(--primary-brown);
     display: flex;
@@ -363,7 +363,7 @@ body {
 }
 
 .discount-badge {
-    font-size: 10px;
+    font-size: 11px;
     color: #22c55e;
     font-weight: 600;
 }
@@ -371,12 +371,12 @@ body {
 .add-to-cart-btn {
     width: 100%;
     margin-top: 8px;
-    padding: 10px;
+    padding: 12px;
     background: linear-gradient(135deg, var(--primary-brown) 0%, var(--dark-brown) 100%);
     color: white;
     border: none;
     border-radius: 6px;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
@@ -849,8 +849,8 @@ body {
 /* 모바일 최적화 */
 @media (max-width: 768px) {
     .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        grid-template-columns: 1fr;
+        gap: 12px;
     }
     
     .logo {
@@ -867,37 +867,37 @@ body {
     }
     
     .product-icon {
-        font-size: 20px;
+        font-size: 24px;
     }
     
     .product-name {
-        font-size: 11px;
+        font-size: 13px;
     }
     
     .product-description {
-        font-size: 9px;
-        -webkit-line-clamp: 1;
+        font-size: 10px;
+        -webkit-line-clamp: 2;
     }
     
     .option-label {
-        font-size: 10px;
+        font-size: 11px;
     }
     
     .option-price {
-        font-size: 12px;
+        font-size: 13px;
     }
     
     .discount-badge {
-        font-size: 9px;
+        font-size: 10px;
     }
     
     .add-to-cart-btn {
-        font-size: 11px;
-        padding: 8px;
+        font-size: 12px;
+        padding: 10px;
     }
     
     .product-card.sold-out::before {
-        font-size: 20px;
+        font-size: 28px;
     }
 }
 
