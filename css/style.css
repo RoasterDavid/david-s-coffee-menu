@@ -105,12 +105,12 @@ body {
     display: flex;
     gap: 10px;
     padding: 15px 20px;
-    max-width: 100%;
-    margin: 0;
+    max-width: 1200px;
+    margin: 0 auto;
     position: sticky;
-    top: 0;
+    top: 65px;
     background: var(--ivory);
-    z-index: 999;
+    z-index: 998;
     border-bottom: 2px solid var(--warm-beige);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
