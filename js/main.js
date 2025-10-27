@@ -34,33 +34,71 @@ function renderProducts() {
 function createProductCard(product, type) {
     // 품절 처리
     const isSoldOut = product.soldOut === true;
+    const isAlmostSoldOut = product.almostSoldOut === true;
     const soldOutClass = isSoldOut ? 'sold-out' : '';
     
-    // 배지 처리
+    // 배지 처리 (여러 배지 동시 표시 가능)
     let badgeHTML = '';
+    
     if (isSoldOut) {
+        // SEASON OUT은 단독 표시
         badgeHTML = `
             <div class="product-badge badge-soldout">
                 SEASON OUT
             </div>
         `;
-    } else if (product.badge) {
-        badgeHTML = `
-            <div class="product-badge badge-${product.badge}">
-                ${product.badge === 'best' ? 'BEST' : 'NEW'}
-            </div>
-        `;
+    } else {
+        // 일반 배지 + 품절임박 동시 표시
+        const badges = [];
+        
+        if (product.badge) {
+            badges.push(`
+                <div class="product-badge badge-${product.badge}">
+                    ${product.badge === 'best' ? 'BEST' : 'NEW'}
+                </div>
+            `);
+        }
+        
+        if (isAlmostSoldOut) {
+            badges.push(`
+                <div class="product-badge badge-almostsoldout" style="top: ${product.badge ? '34px' : '8px'};">
+                    품절임박
+                </div>
+            `);
+        }
+        
+        badgeHTML = badges.join('');
     }
     
-    const optionsHTML = product.options.map((option, index) => `
-        <div class="option-row" 
-             data-product-id="${product.id}" 
-             data-option-index="${index}"
-             onclick="${isSoldOut ? '' : `selectOption('${product.id}', ${index}, '${type}')`}">
-            <span class="option-label">${option.size}</span>
-            <span class="option-price">¥${option.price}</span>
-        </div>
-    `).join('');
+    // 옵션 HTML 생성 (할인율 포함)
+    const optionsHTML = product.options.map((option, index) => {
+        let priceHTML = `¥${option.price}`;
+        
+        // 두 번째 옵션(200g 또는 8개 박스)일 경우 할인율 계산
+        if (index === 1 && product.options.length === 2) {
+            const smallPrice = product.options[0].price;
+            const largePrice = product.options[1].price;
+            const expectedPrice = smallPrice * 2;
+            const discount = ((expectedPrice - largePrice) / expectedPrice * 100).toFixed(0);
+            
+            if (discount > 0) {
+                priceHTML = `
+                    <span>¥${option.price}</span>
+                    <span class="discount-badge">${discount}%↓</span>
+                `;
+            }
+        }
+        
+        return `
+            <div class="option-row" 
+                 data-product-id="${product.id}" 
+                 data-option-index="${index}"
+                 onclick="${isSoldOut ? '' : `selectOption('${product.id}', ${index}, '${type}')`}">
+                <span class="option-label">${option.size}</span>
+                <span class="option-price">${priceHTML}</span>
+            </div>
+        `;
+    }).join('');
     
     const buttonText = isSoldOut ? 'SEASON OUT' : '옵션을 선택하세요';
     
