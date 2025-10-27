@@ -1,17 +1,7 @@
 // 제품 데이터
 const productsData = {
     beans: [
-        {
-            id: 'bean-1',
-            name: '에티오피아 젤라나 게이샤 G1',
-            icon: '🌟',
-            badge: 'best',
-            description: '플로럴한 향과 깔끔한 산미, 베르가못의 우아함',
-            options: [
-                { size: '100g', price: 60 },
-                { size: '200g', price: 100 }
-            ]
-        },
+        // BEST 그룹
         {
             id: 'bean-2',
             name: '킹스블랜드 No.2',
@@ -24,39 +14,30 @@ const productsData = {
             ]
         },
         {
-            id: 'bean-3',
-            name: '에티오피아 구지 아돌라 G1 Winey Natural',
-            icon: '🍷',
+            id: 'bean-1',
+            name: '에티오피아 젤라나 게이샤 G1',
+            icon: '🌟',
             badge: 'best',
-            soldOut: true,
-            description: '와인같은 깊은 풍미와 베리류의 달콤함',
-            options: [
-                { size: '100g', price: 50 },
-                { size: '200g', price: 80 }
-            ]
-        },
-        {
-            id: 'bean-4',
-            name: '파나마 볼칸 바루 팔로마 SHB',
-            icon: '🌺',
-            badge: null,
-            description: '밝은 감귤향과 꿀의 단맛, 균형잡힌 바디감',
+            almostSoldOut: true,
+            description: '플로럴한 향과 깔끔한 산미, 베르가못의 우아함',
             options: [
                 { size: '100g', price: 60 },
                 { size: '200g', price: 100 }
             ]
         },
+        // NEW 그룹
         {
-            id: 'bean-5',
-            name: '인도네시아 가요 만델링 G1',
-            icon: '🏝️',
-            badge: null,
-            description: '묵직한 바디감과 허브향, 깊은 다크 초콜릿',
+            id: 'bean-9',
+            name: '케냐 니에리 스카 AA',
+            icon: '🦁',
+            badge: 'new',
+            description: '블랙커런트와 토마토의 독특한 산미와 풍미',
             options: [
-                { size: '100g', price: 55 },
-                { size: '200g', price: 90 }
+                { size: '100g', price: 50 },
+                { size: '200g', price: 80 }
             ]
         },
+        // 일반 제품 (가격 낮은 순)
         {
             id: 'bean-6',
             name: '킹스블랜드 No.1',
@@ -80,6 +61,17 @@ const productsData = {
             ]
         },
         {
+            id: 'bean-10',
+            name: '브라질 세하도 바우 팜',
+            icon: '🌳',
+            badge: null,
+            description: '고소한 넛향과 초콜릿, 부드러운 마무리',
+            options: [
+                { size: '100g', price: 50 },
+                { size: '200g', price: 80 }
+            ]
+        },
+        {
             id: 'bean-8',
             name: '코스타리카 센트럴밸리 뜨레스 누베스 SHB',
             icon: '☁️',
@@ -91,25 +83,14 @@ const productsData = {
             ]
         },
         {
-            id: 'bean-9',
-            name: '케냐 니에리 스카 AA',
-            icon: '🦁',
-            badge: 'new',
-            description: '블랙커런트와 토마토의 독특한 산미와 풍미',
-            options: [
-                { size: '100g', price: 50 },
-                { size: '200g', price: 80 }
-            ]
-        },
-        {
-            id: 'bean-10',
-            name: '브라질 세하도 바우 팜',
-            icon: '🌳',
+            id: 'bean-5',
+            name: '인도네시아 가요 만델링 G1',
+            icon: '🏝️',
             badge: null,
-            description: '고소한 넛향과 초콜릿, 부드러운 마무리',
+            description: '묵직한 바디감과 허브향, 깊은 다크 초콜릿',
             options: [
-                { size: '100g', price: 50 },
-                { size: '200g', price: 80 }
+                { size: '100g', price: 55 },
+                { size: '200g', price: 90 }
             ]
         },
         {
@@ -135,6 +116,17 @@ const productsData = {
             ]
         },
         {
+            id: 'bean-4',
+            name: '파나마 볼칸 바루 팔로마 SHB',
+            icon: '🌺',
+            badge: null,
+            description: '밝은 감귤향과 꿀의 단맛, 균형잡힌 바디감',
+            options: [
+                { size: '100g', price: 60 },
+                { size: '200g', price: 100 }
+            ]
+        },
+        {
             id: 'bean-13',
             name: '콜롬비아 네바다 코코넛 버터 무산소발효',
             icon: '🥥',
@@ -144,9 +136,23 @@ const productsData = {
                 { size: '100g', price: 70 },
                 { size: '200g', price: 130 }
             ]
+        },
+        // SEASON OUT 제품 (맨 끝)
+        {
+            id: 'bean-3',
+            name: '에티오피아 구지 아돌라 G1 Winey Natural',
+            icon: '🍷',
+            badge: 'best',
+            soldOut: true,
+            description: '와인같은 깊은 풍미와 베리류의 달콤함',
+            options: [
+                { size: '100g', price: 50 },
+                { size: '200g', price: 80 }
+            ]
         }
     ],
     drip: [
+        // BEST 그룹
         {
             id: 'drip-1',
             name: '5가지 & 8가지 맛 선물세트 랜덤',
@@ -159,50 +165,30 @@ const productsData = {
             ]
         },
         {
-            id: 'drip-2',
-            name: '에티오피아 구지 아돌라 G1',
-            icon: '🍷',
-            badge: 'best',
-            soldOut: true,
-            description: '와인같은 깊은 풍미와 베리류의 달콤함',
-            options: [
-                { size: '5개/박스', price: 50 },
-                { size: '8개/박스', price: 80 }
-            ]
-        },
-        {
             id: 'drip-3',
             name: '에티오피아 젤라나 게이샤 G1',
             icon: '🌟',
             badge: 'best',
+            almostSoldOut: true,
             description: '플로럴한 향과 깔끔한 산미, 베르가못의 우아함',
             options: [
                 { size: '5개/박스', price: 60 },
                 { size: '8개/박스', price: 90 }
             ]
         },
+        // NEW 그룹
         {
-            id: 'drip-4',
-            name: '파나마 볼칸 바루 팔로마 SHB',
-            icon: '🌺',
-            badge: null,
-            description: '밝은 감귤향과 꿀의 단맛, 균형잡힌 바디감',
+            id: 'drip-9',
+            name: '케냐 니에리 스카 AA',
+            icon: '🦁',
+            badge: 'new',
+            description: '블랙커런트와 토마토의 독특한 산미와 풍미',
             options: [
-                { size: '5개/박스', price: 60 },
-                { size: '8개/박스', price: 90 }
+                { size: '5개/박스', price: 50 },
+                { size: '8개/박스', price: 80 }
             ]
         },
-        {
-            id: 'drip-5',
-            name: '인도네시아 가요 만델링 G1',
-            icon: '🏝️',
-            badge: null,
-            description: '묵직한 바디감과 허브향, 깊은 다크 초콜릿',
-            options: [
-                { size: '5개/박스', price: 55 },
-                { size: '8개/박스', price: 90 }
-            ]
-        },
+        // 일반 제품 (가격 낮은 순)
         {
             id: 'drip-6',
             name: '킹스블랜드 No.1',
@@ -221,30 +207,8 @@ const productsData = {
             badge: null,
             description: '깔끔한 산미와 카라멜 단맛의 클래식한 맛',
             options: [
-                { size: '5개 박스', price: 50 },
-                { size: '8개 박스', price: 70 }
-            ]
-        },
-        {
-            id: 'drip-8',
-            name: '코스타리카 센트럴밸리 뜨레스 누베스 SHB',
-            icon: '☁️',
-            badge: null,
-            description: '시트러스한 산미와 부드러운 바디의 균형미',
-            options: [
                 { size: '5개/박스', price: 50 },
-                { size: '8개/박스', price: 80 }
-            ]
-        },
-        {
-            id: 'drip-9',
-            name: '케냐 니에리 스카 AA',
-            icon: '🦁',
-            badge: 'new',
-            description: '블랙커런트와 토마토의 독특한 산미와 풍미',
-            options: [
-                { size: '5개/박스', price: 50 },
-                { size: '8개/박스', price: 80 }
+                { size: '8개/박스', price: 70 }
             ]
         },
         {
@@ -253,6 +217,17 @@ const productsData = {
             icon: '🌳',
             badge: null,
             description: '고소한 넛향과 초콜릿, 부드러운 마무리',
+            options: [
+                { size: '5개/박스', price: 50 },
+                { size: '8개/박스', price: 80 }
+            ]
+        },
+        {
+            id: 'drip-8',
+            name: '코스타리카 센트럴밸리 뜨레스 누베스 SHB',
+            icon: '☁️',
+            badge: null,
+            description: '시트러스한 산미와 부드러운 바디의 균형미',
             options: [
                 { size: '5개/박스', price: 50 },
                 { size: '8개/박스', price: 80 }
@@ -270,6 +245,17 @@ const productsData = {
             ]
         },
         {
+            id: 'drip-5',
+            name: '인도네시아 가요 만델링 G1',
+            icon: '🏝️',
+            badge: null,
+            description: '묵직한 바디감과 허브향, 깊은 다크 초콜릿',
+            options: [
+                { size: '5개/박스', price: 55 },
+                { size: '8개/박스', price: 90 }
+            ]
+        },
+        {
             id: 'drip-12',
             name: '케냐 엠부 AB TOP',
             icon: '🦁',
@@ -281,6 +267,17 @@ const productsData = {
             ]
         },
         {
+            id: 'drip-4',
+            name: '파나마 볼칸 바루 팔로마 SHB',
+            icon: '🌺',
+            badge: null,
+            description: '밝은 감귤향과 꿀의 단맛, 균형잡힌 바디감',
+            options: [
+                { size: '5개/박스', price: 60 },
+                { size: '8개/박스', price: 90 }
+            ]
+        },
+        {
             id: 'drip-13',
             name: '콜롬비아 네바다 코코넛 버터',
             icon: '🥥',
@@ -289,6 +286,19 @@ const productsData = {
             options: [
                 { size: '5개/박스', price: 65 },
                 { size: '8개/박스', price: 100 }
+            ]
+        },
+        // SEASON OUT 제품 (맨 끝)
+        {
+            id: 'drip-2',
+            name: '에티오피아 구지 아돌라 G1',
+            icon: '🍷',
+            badge: 'best',
+            soldOut: true,
+            description: '와인같은 깊은 풍미와 베리류의 달콤함',
+            options: [
+                { size: '5개/박스', price: 50 },
+                { size: '8개/박스', price: 80 }
             ]
         }
     ]
