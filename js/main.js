@@ -262,17 +262,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // 스와이프 제스처 이벤트 리스너 추가
-    const container = document.querySelector('.container');
+    // 스와이프 제스처 이벤트 리스너 추가 (모든 컨테이너에 적용)
+    const containers = document.querySelectorAll('.container');
     
-    container.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-        touchStartY = e.changedTouches[0].screenY;
-    }, { passive: true });
-    
-    container.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        touchEndY = e.changedTouches[0].screenY;
-        handleSwipeGesture();
-    }, { passive: true });
+    containers.forEach(container => {
+        container.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+        
+        container.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipeGesture();
+        }, { passive: true });
+    });
 });
