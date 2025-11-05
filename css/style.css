@@ -253,6 +253,16 @@ body {
     color: white;
 }
 
+.badge-discount {
+    background: linear-gradient(135deg, #ff4444, #cc0000);
+    color: white;
+    font-size: 13px;
+    padding: 6px 12px;
+    font-weight: 700;
+    animation: pulse 2s infinite;
+    box-shadow: 0 2px 8px rgba(255, 68, 68, 0.4);
+}
+
 .badge-soldout {
     background: linear-gradient(135deg, #868e96, #495057);
     color: white;
@@ -287,6 +297,11 @@ body {
     
     .badge-almostsoldout {
         font-size: 9px;
+    }
+    
+    .badge-discount {
+        font-size: 11px;
+        padding: 5px 10px;
     }
 }
 
@@ -378,6 +393,20 @@ body {
     font-size: 11px;
     color: #22c55e;
     font-weight: 600;
+}
+
+.original-price {
+    font-size: 11px;
+    color: #999;
+    text-decoration: line-through;
+    font-weight: 400;
+    margin-right: 6px;
+}
+
+.sale-price {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ff4444;
 }
 
 .add-to-cart-btn {
