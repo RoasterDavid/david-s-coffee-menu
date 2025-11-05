@@ -17,12 +17,11 @@ const productsData = {
             id: 'bean-1',
             name: '에티오피아 젤라나 게이샤 G1',
             icon: '🌟',
-            badge: 'best',
+            badge: 'discount',
             almostSoldOut: true,
             description: '플로럴한 향과 깔끔한 산미, 베르가못의 우아함',
             options: [
-                { size: '100g', price: 60 },
-                { size: '200g', price: 100 }
+                { size: '200g', price: 90, originalPrice: 100 }
             ]
         },
         // NEW 그룹
@@ -169,7 +168,7 @@ const productsData = {
             name: '에티오피아 젤라나 게이샤 G1',
             icon: '🌟',
             badge: 'best',
-            almostSoldOut: true,
+            soldOut: true,
             description: '플로럴한 향과 깔끔한 산미, 베르가못의 우아함',
             options: [
                 { size: '5개/박스', price: 60 },
