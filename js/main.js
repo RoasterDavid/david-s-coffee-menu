@@ -101,16 +101,25 @@ function createProductCard(product, type) {
         const badges = [];
         
         if (product.badge) {
+            let badgeText = '';
+            if (product.badge === 'best') {
+                badgeText = 'BEST';
+            } else if (product.badge === 'new') {
+                badgeText = 'NEW';
+            } else if (product.badge === 'discount') {
+                badgeText = '🔥 10% 특가';
+            }
+            
             badges.push(`
                 <div class="product-badge badge-${product.badge}">
-                    ${product.badge === 'best' ? 'BEST' : 'NEW'}
+                    ${badgeText}
                 </div>
             `);
         }
         
         if (isAlmostSoldOut) {
             badges.push(`
-                <div class="product-badge badge-almostsoldout" style="top: ${product.badge ? '34px' : '8px'};">
+                <div class="product-badge badge-almostsoldout" style="top: ${product.badge ? '38px' : '8px'};">
                     품절임박
                 </div>
             `);
@@ -123,8 +132,15 @@ function createProductCard(product, type) {
     const optionsHTML = product.options.map((option, index) => {
         let priceHTML = `¥${option.price}`;
         
+        // 특별 할인 가격 표시 (originalPrice가 있는 경우)
+        if (option.originalPrice) {
+            priceHTML = `
+                <span class="original-price">¥${option.originalPrice}</span>
+                <span class="sale-price">¥${option.price}</span>
+            `;
+        }
         // 두 번째 옵션(200g 또는 8개 박스)일 경우 할인율 계산
-        if (index === 1 && product.options.length === 2) {
+        else if (index === 1 && product.options.length === 2) {
             const smallPrice = product.options[0].price;
             const largePrice = product.options[1].price;
             const expectedPrice = smallPrice * 2;
