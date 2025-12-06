@@ -108,6 +108,8 @@ function createProductCard(product, type) {
                 badgeText = 'NEW';
             } else if (product.badge === 'discount') {
                 badgeText = '🔥 10% 특가';
+            } else if (product.badge === 'limited') {
+                badgeText = '⭐ 한정판매';
             }
             
             badges.push(`
@@ -132,26 +134,12 @@ function createProductCard(product, type) {
     const optionsHTML = product.options.map((option, index) => {
         let priceHTML = `¥${option.price}`;
         
-        // 특별 할인 가격 표시 (originalPrice가 있는 경우)
+        // 특별 할인 가격 표시 (originalPrice가 있는 경우만)
         if (option.originalPrice) {
             priceHTML = `
                 <span class="original-price">¥${option.originalPrice}</span>
                 <span class="sale-price">¥${option.price}</span>
             `;
-        }
-        // 두 번째 옵션(200g 또는 8개 박스)일 경우 할인율 계산
-        else if (index === 1 && product.options.length === 2) {
-            const smallPrice = product.options[0].price;
-            const largePrice = product.options[1].price;
-            const expectedPrice = smallPrice * 2;
-            const discount = ((expectedPrice - largePrice) / expectedPrice * 100).toFixed(0);
-            
-            if (discount > 0) {
-                priceHTML = `
-                    <span>¥${option.price}</span>
-                    <span class="discount-badge">${discount}%↓</span>
-                `;
-            }
         }
         
         return `
@@ -166,18 +154,25 @@ function createProductCard(product, type) {
     }).join('');
     
     const buttonText = isSoldOut ? 'SEASON OUT' : '옵션을 선택하세요';
+    const christmasClass = product.isChristmasSpecial ? 'christmas-special' : '';
+    const subtitleHTML = product.subtitle ? `<div class="christmas-subtitle">${product.subtitle}</div>` : '';
+    const highlightHTML = product.highlight ? `<div class="highlight-text">${product.highlight}</div>` : '';
+    const detailedDescriptionHTML = product.detailedDescription ? `<div class="detailed-description">${product.detailedDescription}</div>` : '';
     
     return `
-        <div class="product-card ${soldOutClass}">
+        <div class="product-card ${soldOutClass} ${christmasClass}">
             ${badgeHTML}
             <div class="product-header">
                 <div class="product-icon">${product.icon}</div>
                 <div class="product-info">
                     <div class="product-name">${product.name}</div>
+                    ${subtitleHTML}
+                    ${highlightHTML}
                     <div class="product-description">${product.description}</div>
                 </div>
             </div>
             <div class="product-body">
+                ${detailedDescriptionHTML}
                 <div class="product-options">
                     ${optionsHTML}
                 </div>
