@@ -4,34 +4,116 @@
     box-sizing: border-box;
 }
 
+/* 눈 내리는 효과 */
+.snowfall {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    background-image: 
+        radial-gradient(circle, white 1px, transparent 1px),
+        radial-gradient(circle, white 1px, transparent 1px),
+        radial-gradient(circle, white 0.5px, transparent 0.5px);
+    background-size: 200px 200px, 300px 300px, 150px 150px;
+    background-position: 0 0, 40px 60px, 130px 270px;
+    animation: snowfall 20s linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes snowfall {
+    0% {
+        background-position: 0 0, 40px 60px, 130px 270px;
+    }
+    100% {
+        background-position: 200px 200px, 240px 260px, 330px 470px;
+    }
+}
+
+/* 크리스마스 배너 */
+.christmas-banner {
+    background: linear-gradient(90deg, var(--christmas-red), var(--christmas-gold), var(--christmas-green), var(--christmas-gold), var(--christmas-red));
+    background-size: 200% 100%;
+    color: white;
+    text-align: center;
+    padding: 12px 20px;
+    font-weight: 700;
+    font-size: 16px;
+    animation: shimmer-banner 3s linear infinite;
+    box-shadow: 0 2px 10px var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+}
+
+@keyframes shimmer-banner {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+/* 크리스마스 푸터 */
+.christmas-footer {
+    background: linear-gradient(135deg, var(--dark-red) 0%, var(--christmas-red) 50%, var(--dark-green) 100%);
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 40px;
+    box-shadow: 0 -4px 20px var(--shadow);
+}
+
+.christmas-footer p {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.christmas-footer .footer-subtitle {
+    font-size: 14px;
+    font-weight: 400;
+    opacity: 0.9;
+}
+
 :root {
-    --primary-brown: #6F4E37;
-    --dark-brown: #4A3426;
-    --light-brown: #A0826D;
-    --ivory: #FFFEF0;
-    --cream: #F5F5DC;
-    --warm-beige: #E8DCC4;
+    --christmas-red: #C41E3A;
+    --dark-red: #8B0000;
+    --christmas-green: #0F5132;
+    --dark-green: #2D5016;
+    --christmas-gold: #FFD700;
+    --dark-gold: #DAA520;
+    --snow-white: #FFFAFA;
+    --light-pink: #FFF5F5;
     --text-dark: #2C2416;
-    --shadow: rgba(111, 78, 55, 0.15);
-    --shadow-hover: rgba(111, 78, 55, 0.25);
+    --shadow: rgba(196, 30, 58, 0.15);
+    --shadow-hover: rgba(196, 30, 58, 0.35);
+    --gold-shadow: rgba(255, 215, 0, 0.3);
 }
 
 body {
     font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: linear-gradient(135deg, var(--ivory) 0%, var(--cream) 100%);
+    background: var(--light-pink);
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(196, 30, 58, 0.05) 0%, transparent 50%);
     color: var(--text-dark);
     min-height: 100vh;
-    padding-bottom: 20px;
+    padding-bottom: 80px;
+    position: relative;
 }
 
 /* 헤더 */
 .header {
-    background: linear-gradient(135deg, var(--primary-brown) 0%, var(--dark-brown) 100%);
-    color: var(--ivory);
-    padding: 15px 0;
-    box-shadow: 0 2px 10px var(--shadow);
+    background: linear-gradient(135deg, var(--dark-red) 0%, var(--christmas-red) 50%, var(--dark-green) 100%);
+    color: white;
+    padding: 20px 0;
+    box-shadow: 0 4px 15px var(--shadow);
     position: sticky;
-    top: 0;
+    top: 50px;
     z-index: 1000;
 }
 
@@ -45,9 +127,29 @@ body {
 }
 
 .logo {
-    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.logo-title {
+    font-size: 26px;
     font-weight: 700;
     letter-spacing: -0.5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.logo-subtitle {
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0.95;
+}
+
+.logo-tagline {
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.85;
+    font-style: italic;
 }
 
 .cart-icon {
@@ -108,19 +210,19 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     position: sticky;
-    top: 65px;
-    background: var(--ivory);
+    top: 145px;
+    background: linear-gradient(135deg, var(--snow-white) 0%, var(--light-pink) 100%);
     z-index: 998;
-    border-bottom: 2px solid var(--warm-beige);
+    border-bottom: 3px solid var(--christmas-gold);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .tab-btn {
     flex: 1;
     padding: 12px 20px;
-    border: 2px solid var(--light-brown);
+    border: 2px solid var(--christmas-gold);
     background: white;
-    color: var(--primary-brown);
+    color: var(--christmas-red);
     font-size: 16px;
     font-weight: 600;
     border-radius: 10px;
@@ -129,9 +231,10 @@ body {
 }
 
 .tab-btn.active {
-    background: var(--primary-brown);
-    color: var(--ivory);
-    border-color: var(--primary-brown);
+    background: linear-gradient(135deg, var(--christmas-red) 0%, var(--dark-red) 100%);
+    color: white;
+    border-color: var(--christmas-gold);
+    box-shadow: 0 4px 10px var(--shadow);
 }
 
 .tab-btn:active {
@@ -180,6 +283,78 @@ body {
     box-shadow: 0 4px 15px var(--shadow);
     transition: all 0.3s;
     position: relative;
+    border: 2px solid transparent;
+}
+
+.product-card:hover {
+    border-color: var(--christmas-gold);
+    box-shadow: 0 6px 20px var(--shadow-hover), 0 0 15px var(--gold-shadow);
+    transform: translateY(-2px);
+}
+
+.product-card.christmas-special {
+    border: 3px solid var(--christmas-gold);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    background: linear-gradient(135deg, #fff9f0 0%, #ffffff 100%);
+    animation: card-glow 2s ease-in-out infinite;
+}
+
+@keyframes card-glow {
+    0%, 100% {
+        box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    }
+    50% {
+        box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6), 0 0 20px rgba(255, 215, 0, 0.3);
+    }
+}
+
+.product-card.christmas-special .product-header {
+    background: linear-gradient(135deg, #8B0000 0%, #DC143C 100%);
+}
+
+.product-card.christmas-special .product-icon {
+    font-size: 32px;
+}
+
+.product-card.christmas-special .product-name {
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.product-card.christmas-special .product-description {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 12px;
+}
+
+.christmas-subtitle {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    margin-top: 2px;
+    font-style: italic;
+}
+
+.highlight-text {
+    font-size: 17px;
+    font-weight: 700;
+    color: #DAA520;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    margin: 6px 0;
+    line-height: 1.3;
+    letter-spacing: -0.3px;
+}
+
+.detailed-description {
+    font-size: 10px;
+    line-height: 1.6;
+    color: #666;
+    margin-top: 8px;
+    padding: 10px;
+    background: #fffaf5;
+    border-radius: 8px;
+    border: 1px solid rgba(196, 30, 58, 0.1);
+    white-space: pre-line;
 }
 
 .product-card:active {
@@ -244,13 +419,16 @@ body {
 }
 
 .badge-best {
-    background: linear-gradient(135deg, #ff6b6b, #ff4444);
+    background: linear-gradient(135deg, var(--christmas-red), var(--dark-red));
     color: white;
+    border: 2px solid var(--christmas-gold);
+    box-shadow: 0 2px 8px var(--gold-shadow);
 }
 
 .badge-new {
-    background: linear-gradient(135deg, #51cf66, #37b24d);
+    background: linear-gradient(135deg, var(--christmas-green), var(--dark-green));
     color: white;
+    box-shadow: 0 2px 8px rgba(15, 81, 50, 0.4);
 }
 
 .badge-discount {
@@ -261,6 +439,25 @@ body {
     font-weight: 700;
     animation: pulse 2s infinite;
     box-shadow: 0 2px 8px rgba(255, 68, 68, 0.4);
+}
+
+.badge-limited {
+    background: linear-gradient(135deg, #d4af37, #c5a028);
+    color: white;
+    font-size: 13px;
+    padding: 6px 12px;
+    font-weight: 700;
+    box-shadow: 0 2px 10px rgba(212, 175, 55, 0.5);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% {
+        box-shadow: 0 2px 10px rgba(212, 175, 55, 0.5);
+    }
+    50% {
+        box-shadow: 0 2px 15px rgba(212, 175, 55, 0.8);
+    }
 }
 
 .badge-soldout {
@@ -303,14 +500,41 @@ body {
         font-size: 11px;
         padding: 5px 10px;
     }
+    
+    .badge-limited {
+        font-size: 11px;
+        padding: 5px 10px;
+    }
+    
+    .product-card.christmas-special .product-icon {
+        font-size: 28px;
+    }
+    
+    .product-card.christmas-special .product-name {
+        font-size: 14px;
+    }
+    
+    .christmas-subtitle {
+        font-size: 10px;
+    }
+    
+    .highlight-text {
+        font-size: 15px;
+    }
+    
+    .detailed-description {
+        font-size: 9px;
+        padding: 8px;
+    }
 }
 
 .product-header {
-    background: linear-gradient(135deg, var(--warm-beige) 0%, var(--cream) 100%);
+    background: linear-gradient(135deg, #fff5f0 0%, #ffe8e0 100%);
     padding: 12px;
     display: flex;
     align-items: center;
     gap: 10px;
+    border-bottom: 1px solid rgba(196, 30, 58, 0.1);
 }
 
 .product-icon {
@@ -358,7 +582,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 8px 10px;
-    background: var(--ivory);
+    background: #fffaf5;
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.2s;
@@ -366,12 +590,14 @@ body {
 }
 
 .option-row:hover {
-    background: var(--warm-beige);
+    background: #ffe8e0;
+    border-color: var(--christmas-gold);
 }
 
 .option-row.selected {
-    border-color: var(--primary-brown);
-    background: var(--warm-beige);
+    border-color: var(--christmas-red);
+    background: #ffe8e0;
+    box-shadow: 0 2px 8px var(--shadow);
 }
 
 .option-label {
@@ -383,10 +609,15 @@ body {
 .option-price {
     font-size: 14px;
     font-weight: 700;
-    color: var(--primary-brown);
+    color: var(--christmas-red);
     display: flex;
     align-items: center;
     gap: 6px;
+}
+
+.option-price::before {
+    content: '🎁 ';
+    font-size: 12px;
 }
 
 .discount-badge {
@@ -413,7 +644,7 @@ body {
     width: 100%;
     margin-top: 8px;
     padding: 12px;
-    background: linear-gradient(135deg, var(--primary-brown) 0%, var(--dark-brown) 100%);
+    background: linear-gradient(135deg, var(--christmas-red) 0%, var(--dark-red) 100%);
     color: white;
     border: none;
     border-radius: 6px;
@@ -421,6 +652,10 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
+}
+
+.add-to-cart-btn::before {
+    content: '🔔 ';
 }
 
 .add-to-cart-btn:active {
@@ -455,7 +690,7 @@ body {
 
 .cart-header {
     padding: 20px;
-    background: var(--primary-brown);
+    background: linear-gradient(135deg, var(--christmas-red) 0%, var(--dark-red) 100%);
     color: white;
     display: flex;
     justify-content: space-between;
@@ -506,11 +741,12 @@ body {
 }
 
 .cart-item {
-    background: var(--ivory);
+    background: #fffaf5;
     border-radius: 10px;
     padding: 15px;
     margin-bottom: 15px;
     position: relative;
+    border: 1px solid rgba(196, 30, 58, 0.1);
 }
 
 .cart-item-header {
@@ -560,7 +796,7 @@ body {
 .cart-item-price {
     font-size: 16px;
     font-weight: 700;
-    color: var(--primary-brown);
+    color: var(--christmas-red);
 }
 
 .cart-item-quantity {
@@ -572,7 +808,7 @@ body {
 }
 
 .quantity-btn {
-    background: var(--primary-brown);
+    background: linear-gradient(135deg, var(--christmas-red), var(--dark-red));
     color: white;
     border: none;
     border-radius: 6px;
@@ -588,7 +824,8 @@ body {
 }
 
 .quantity-btn:hover {
-    background: var(--dark-brown);
+    background: linear-gradient(135deg, var(--dark-red), #6B0000);
+    box-shadow: 0 2px 8px var(--shadow);
 }
 
 .quantity-btn:active {
@@ -617,7 +854,7 @@ body {
 .recipient-title {
     font-size: 16px;
     font-weight: 600;
-    color: var(--dark-brown);
+    color: var(--christmas-red);
     margin-bottom: 12px;
 }
 
@@ -640,8 +877,8 @@ body {
 
 .recipient-input:focus {
     outline: none;
-    border-color: var(--primary-brown);
-    background: var(--ivory);
+    border-color: var(--christmas-red);
+    background: #fffaf5;
 }
 
 .recipient-input::placeholder {
@@ -657,8 +894,8 @@ body {
 .shipping-info-section {
     margin-bottom: 20px;
     padding: 15px;
-    background: linear-gradient(135deg, #FFF9E6, #FFF3D6);
-    border: 2px dashed var(--light-brown);
+    background: linear-gradient(135deg, #fff5f5, #ffe8e8);
+    border: 2px dashed var(--christmas-gold);
     border-radius: 10px;
 }
 
@@ -671,7 +908,7 @@ body {
 }
 
 .shipping-info-text strong {
-    color: var(--primary-brown);
+    color: var(--christmas-red);
     font-weight: 700;
 }
 
@@ -686,21 +923,32 @@ body {
 
 .total-price {
     font-size: 24px;
-    color: var(--primary-brown);
+    color: var(--christmas-red);
     font-weight: 700;
+}
+
+.total-price::before {
+    content: '🎁 ';
 }
 
 .order-btn {
     width: 100%;
     padding: 16px;
-    background: linear-gradient(135deg, var(--primary-brown) 0%, var(--dark-brown) 100%);
+    background: linear-gradient(135deg, var(--christmas-red) 0%, var(--dark-red) 100%);
     color: white;
-    border: none;
+    border: 2px solid var(--christmas-gold);
     border-radius: 10px;
     font-size: 18px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
+    box-shadow: 0 4px 15px var(--shadow);
+}
+
+.order-btn:hover {
+    background: linear-gradient(135deg, var(--dark-red), #6B0000);
+    box-shadow: 0 6px 20px var(--shadow-hover);
+    transform: translateY(-2px);
 }
 
 .order-btn:active {
@@ -772,7 +1020,7 @@ body {
 
 .modal h2 {
     font-size: 24px;
-    color: var(--dark-brown);
+    color: var(--christmas-red);
     margin-bottom: 20px;
     text-align: center;
 }
@@ -795,8 +1043,8 @@ body {
 }
 
 .order-details-box {
-    background: var(--ivory);
-    border: 2px solid var(--warm-beige);
+    background: #fffaf5;
+    border: 2px solid var(--christmas-gold);
     border-radius: 12px;
     padding: 20px;
     margin-bottom: 20px;
@@ -889,13 +1137,43 @@ body {
 
 /* 모바일 최적화 */
 @media (max-width: 768px) {
+    .christmas-banner {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+    
+    .header {
+        padding: 15px 0;
+        top: 45px;
+    }
+    
+    .logo-title {
+        font-size: 20px;
+    }
+    
+    .logo-subtitle {
+        font-size: 12px;
+    }
+    
+    .logo-tagline {
+        font-size: 10px;
+    }
+    
+    .tabs {
+        top: 125px;
+    }
+    
     .products-grid {
         grid-template-columns: 1fr;
         gap: 12px;
     }
     
-    .logo {
-        font-size: 18px;
+    .christmas-footer p {
+        font-size: 16px;
+    }
+    
+    .christmas-footer .footer-subtitle {
+        font-size: 12px;
     }
     
     .tab-btn {
@@ -948,14 +1226,14 @@ body {
 }
 
 .cart-content::-webkit-scrollbar-track {
-    background: var(--cream);
+    background: #ffe8e0;
 }
 
 .cart-content::-webkit-scrollbar-thumb {
-    background: var(--light-brown);
+    background: var(--christmas-red);
     border-radius: 4px;
 }
 
 .cart-content::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-brown);
+    background: var(--dark-red);
 }
