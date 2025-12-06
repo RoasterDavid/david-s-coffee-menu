@@ -207,6 +207,17 @@ const productsData = {
                 { size: '10개/박스', price: 100 }
             ]
         },
+        {
+            id: 'drip-2-kings',
+            name: '킹스블랜드 No.2',
+            icon: '👑',
+            badge: 'best',
+            description: '부드러운 초콜릿과 캐러멜의 조화로운 블랜딩',
+            options: [
+                { size: '5개/박스', price: 40 },
+                { size: '8개/박스', price: 70 }
+            ]
+        },
         // NEW 그룹
         {
             id: 'drip-14',
