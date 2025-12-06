@@ -10,12 +10,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- 눈 내리는 효과 -->
+    <div class="snowfall"></div>
+    
+    <!-- 크리스마스 배너 -->
+    <div class="christmas-banner">
+        🎊 HOLYDAY 드립백 선물세트 판매중 🎊
+    </div>
+    
     <!-- 헤더 -->
     <header class="header">
         <div class="header-content">
-            <div class="logo">☕ David's Coffee</div>
+            <div class="logo">
+                <div class="logo-title">🎄 David's Coffee 🎅</div>
+                <div class="logo-subtitle">크리스마스 특별 주문표</div>
+                <div class="logo-tagline">따뜻한 커피와 함께하는 특별한 연말 ☕❄️</div>
+            </div>
             <div class="cart-icon" onclick="toggleCart()">
-                🛒
+                🎁
                 <span class="cart-count" id="cartCount">0</span>
             </div>
         </div>
@@ -23,8 +35,8 @@
 
     <!-- 탭 네비게이션 -->
     <nav class="tabs">
-        <button class="tab-btn active" onclick="switchTab('beans')">원두</button>
-        <button class="tab-btn" onclick="switchTab('drip')">드립백</button>
+        <button class="tab-btn active" onclick="switchTab('beans')">🎁 원두</button>
+        <button class="tab-btn" onclick="switchTab('drip')">🎄 드립백</button>
     </nav>
 
     <!-- 원두 섹션 -->
@@ -75,7 +87,7 @@
                     <span>총 금액</span>
                     <span class="total-price" id="totalPrice">¥0</span>
                 </div>
-                <button class="order-btn" onclick="showPaymentModal()">주문하기</button>
+                <button class="order-btn" onclick="showPaymentModal()">🎅 크리스마스 선물 주문하기</button>
             </div>
         </div>
     </div>
@@ -93,14 +105,20 @@
                     <!-- 주문 내역이 여기에 표시됩니다 -->
                 </div>
                 <button class="copy-btn-large" onclick="copyOrderDetails()">
-                    <span class="copy-icon">📋</span>
-                    <span class="copy-text">위챗으로 보내기 (복사)</span>
+                    <span class="copy-icon">🎄</span>
+                    <span class="copy-text">위챗으로 크리스마스 주문 보내기</span>
                 </button>
                 <p class="wechat-note">위 버튼을 누르면 주문 내역이 자동으로 복사됩니다.<br>위챗에서 <strong>David</strong>에게 붙여넣기 해주세요!</p>
             </div>
             <button class="confirm-order-btn" onclick="confirmOrder()">닫기</button>
         </div>
     </div>
+    
+    <!-- 크리스마스 푸터 -->
+    <footer class="christmas-footer">
+        <p>🎄 Merry Christmas & Happy New Year 2025! ☃️</p>
+        <p class="footer-subtitle">David's Coffee와 함께 따뜻한 연말 보내세요 ☕✨</p>
+    </footer>
 
     <script src="js/data.js"></script>
     <script src="js/cart.js"></script>
