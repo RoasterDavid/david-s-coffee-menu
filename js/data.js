@@ -1,6 +1,29 @@
 // 제품 데이터
 const productsData = {
     beans: [
+        // NEW 그룹
+        {
+            id: 'bean-14',
+            name: '에티오피아 벤치 마지 게이샤 G1',
+            icon: '💎',
+            badge: 'new',
+            description: '화이트 플로럴과 자스민의 섬세한 향, 엘레강스한 여운',
+            options: [
+                { size: '100g', price: 60 },
+                { size: '200g', price: 100 }
+            ]
+        },
+        {
+            id: 'bean-15',
+            name: '에티오피아 예가체프 반코 고티티 G1',
+            icon: '🌸',
+            badge: 'new',
+            description: '피치와 베르가못의 달콤함, 실키한 바디감',
+            options: [
+                { size: '100g', price: 60 },
+                { size: '200g', price: 100 }
+            ]
+        },
         // BEST 그룹
         {
             id: 'bean-2',
@@ -14,26 +37,14 @@ const productsData = {
             ]
         },
         {
-            id: 'bean-1',
-            name: '에티오피아 젤라나 게이샤 G1',
-            icon: '🌟',
-            badge: 'discount',
-            almostSoldOut: true,
-            description: '플로럴한 향과 깔끔한 산미, 베르가못의 우아함',
+            id: 'bean-5',
+            name: '인도네시아 가요 만델링 G1',
+            icon: '🏝️',
+            badge: 'best',
+            description: '묵직한 바디감과 허브향, 깊은 다크 초콜릿',
             options: [
-                { size: '200g', price: 90, originalPrice: 100 }
-            ]
-        },
-        // NEW 그룹
-        {
-            id: 'bean-9',
-            name: '케냐 니에리 스카 AA',
-            icon: '🦁',
-            badge: 'new',
-            description: '블랙커런트와 토마토의 독특한 산미와 풍미',
-            options: [
-                { size: '100g', price: 50 },
-                { size: '200g', price: 80 }
+                { size: '100g', price: 55 },
+                { size: '200g', price: 90 }
             ]
         },
         // 일반 제품 (가격 낮은 순)
@@ -60,11 +71,11 @@ const productsData = {
             ]
         },
         {
-            id: 'bean-10',
-            name: '브라질 세하도 바우 팜',
-            icon: '🌳',
+            id: 'bean-9',
+            name: '케냐 니에리 스카 AA',
+            icon: '🦁',
             badge: null,
-            description: '고소한 넛향과 초콜릿, 부드러운 마무리',
+            description: '블랙커런트와 토마토의 독특한 산미와 풍미',
             options: [
                 { size: '100g', price: 50 },
                 { size: '200g', price: 80 }
@@ -79,17 +90,6 @@ const productsData = {
             options: [
                 { size: '100g', price: 50 },
                 { size: '200g', price: 80 }
-            ]
-        },
-        {
-            id: 'bean-5',
-            name: '인도네시아 가요 만델링 G1',
-            icon: '🏝️',
-            badge: null,
-            description: '묵직한 바디감과 허브향, 깊은 다크 초콜릿',
-            options: [
-                { size: '100g', price: 55 },
-                { size: '200g', price: 90 }
             ]
         },
         {
@@ -138,12 +138,35 @@ const productsData = {
         },
         // SEASON OUT 제품 (맨 끝)
         {
+            id: 'bean-1',
+            name: '에티오피아 젤라나 게이샤 G1',
+            icon: '🌟',
+            badge: null,
+            soldOut: true,
+            description: '플로럴한 향과 깔끔한 산미, 베르가못의 우아함',
+            options: [
+                { size: '200g', price: 90, originalPrice: 100 }
+            ]
+        },
+        {
             id: 'bean-3',
             name: '에티오피아 구지 아돌라 G1 Winey Natural',
             icon: '🍷',
-            badge: 'best',
+            badge: null,
             soldOut: true,
             description: '와인같은 깊은 풍미와 베리류의 달콤함',
+            options: [
+                { size: '100g', price: 50 },
+                { size: '200g', price: 80 }
+            ]
+        },
+        {
+            id: 'bean-10',
+            name: '브라질 세하도 바우 팜',
+            icon: '🌳',
+            badge: null,
+            soldOut: true,
+            description: '고소한 넛향과 초콜릿, 부드러운 마무리',
             options: [
                 { size: '100g', price: 50 },
                 { size: '200g', price: 80 }
@@ -151,40 +174,60 @@ const productsData = {
         }
     ],
     drip: [
+        // 한정판 (최상단)
+        {
+            id: 'drip-holiday',
+            name: 'HOLIDAY ROAST',
+            icon: '🎄',
+            badge: 'limited',
+            isChristmasSpecial: true,
+            subtitle: '크리스마스 & 신년 특별 에디션',
+            highlight: '따뜻하고 달콤한 디저트풍의 커피',
+            description: '❄️ 5가지 프리미엄 원두 × 2개씩 = 10개/박스',
+            detailedDescription: `📦 포함된 원두:
+☕ COSTARICA BLUE MINT - 상쾌한 블루베리와 민트의 청량감
+☕ COLOMBIA RUM BARREL - 럼의 깊은 풍미가 느껴지는 배럴 숙성의 복합미
+☕ COLOMBIA COCONUT BUTTER - 코코넛과 버터의 달콤하고 부드러운 디저트 풍미
+☕ HONDURAS WHISKEY BARREL - 위스키와 부드러운 크림의 조화로움
+☕ COLOMBIA ORANGE WINE - 오렌지 꽃향기와 와인의 복합적인 풍미`,
+            options: [
+                { size: '10개/박스', price: 120 }
+            ]
+        },
         // BEST 그룹
         {
             id: 'drip-1',
-            name: '5가지 & 8가지 맛 선물세트 랜덤',
+            name: '5가지 & 8가지 & 10가지 맛 선물세트 (랜덤)',
             icon: '🎁',
             badge: 'best',
-            description: '다양한 원산지의 맛을 한번에 즐기는 선물세트',
+            description: '무작위로 선택된 5가지 맛 or 8가지 맛 or 10가지 맛 드립백으로 구성',
             options: [
                 { size: '5개/박스', price: 50 },
-                { size: '8개/박스', price: 80 }
+                { size: '8개/박스', price: 80 },
+                { size: '10개/박스', price: 100 }
             ]
         },
+        // NEW 그룹
         {
-            id: 'drip-3',
-            name: '에티오피아 젤라나 게이샤 G1',
-            icon: '🌟',
-            badge: 'best',
-            soldOut: true,
-            description: '플로럴한 향과 깔끔한 산미, 베르가못의 우아함',
+            id: 'drip-14',
+            name: '에티오피아 벤치 마지 게이샤 G1',
+            icon: '💎',
+            badge: 'new',
+            description: '화이트 플로럴과 자스민의 섬세한 향, 엘레강스한 여운',
             options: [
                 { size: '5개/박스', price: 60 },
                 { size: '8개/박스', price: 90 }
             ]
         },
-        // NEW 그룹
         {
-            id: 'drip-9',
-            name: '케냐 니에리 스카 AA',
-            icon: '🦁',
+            id: 'drip-15',
+            name: '에티오피아 예가체프 반코 고티티 G1',
+            icon: '🌸',
             badge: 'new',
-            description: '블랙커런트와 토마토의 독특한 산미와 풍미',
+            description: '피치와 베르가못의 달콤함, 실키한 바디감',
             options: [
-                { size: '5개/박스', price: 50 },
-                { size: '8개/박스', price: 80 }
+                { size: '5개/박스', price: 60 },
+                { size: '8개/박스', price: 90 }
             ]
         },
         // 일반 제품 (가격 낮은 순)
@@ -211,11 +254,11 @@ const productsData = {
             ]
         },
         {
-            id: 'drip-10',
-            name: '브라질 세하도 바우 팜',
-            icon: '🌳',
+            id: 'drip-9',
+            name: '케냐 니에리 스카 AA',
+            icon: '🦁',
             badge: null,
-            description: '고소한 넛향과 초콜릿, 부드러운 마무리',
+            description: '블랙커런트와 토마토의 독특한 산미와 풍미',
             options: [
                 { size: '5개/박스', price: 50 },
                 { size: '8개/박스', price: 80 }
@@ -289,12 +332,36 @@ const productsData = {
         },
         // SEASON OUT 제품 (맨 끝)
         {
+            id: 'drip-3',
+            name: '에티오피아 젤라나 게이샤 G1',
+            icon: '🌟',
+            badge: null,
+            soldOut: true,
+            description: '플로럴한 향과 깔끔한 산미, 베르가못의 우아함',
+            options: [
+                { size: '5개/박스', price: 60 },
+                { size: '8개/박스', price: 90 }
+            ]
+        },
+        {
             id: 'drip-2',
             name: '에티오피아 구지 아돌라 G1',
             icon: '🍷',
-            badge: 'best',
+            badge: null,
             soldOut: true,
             description: '와인같은 깊은 풍미와 베리류의 달콤함',
+            options: [
+                { size: '5개/박스', price: 50 },
+                { size: '8개/박스', price: 80 }
+            ]
+        },
+        {
+            id: 'drip-10',
+            name: '브라질 세하도 바우 팜',
+            icon: '🌳',
+            badge: null,
+            soldOut: true,
+            description: '고소한 넛향과 초콜릿, 부드러운 마무리',
             options: [
                 { size: '5개/박스', price: 50 },
                 { size: '8개/박스', price: 80 }
