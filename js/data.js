@@ -24,6 +24,17 @@ const productsData = {
                 { size: '200g', price: 100 }
             ]
         },
+        {
+            id: 'bean-16',
+            name: '온두라스 오팔라카 SHG',
+            icon: '☕',
+            badge: 'new',
+            description: '견과와 초콜릿의 부드러운 조화',
+            options: [
+                { size: '100g', price: 50 },
+                { size: '200g', price: 80 }
+            ]
+        },
         // BEST 그룹
         {
             id: 'bean-2',
@@ -239,6 +250,17 @@ const productsData = {
             options: [
                 { size: '5개/박스', price: 60 },
                 { size: '8개/박스', price: 90 }
+            ]
+        },
+        {
+            id: 'drip-16',
+            name: '온두라스 오팔라카 SHG',
+            icon: '☕',
+            badge: 'new',
+            description: '견과와 초콜릿의 부드러운 조화',
+            options: [
+                { size: '5개/박스', price: 50 },
+                { size: '8개/박스', price: 80 }
             ]
         },
         // 일반 제품 (가격 낮은 순)
