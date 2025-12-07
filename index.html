@@ -67,25 +67,45 @@
                 </div>
             </div>
             <div class="cart-footer">
-                <div class="recipient-info-section">
-                    <h3 class="recipient-title">📦 받는 사람 정보</h3>
-                    <div class="recipient-form">
-                        <input type="text" id="recipientName" class="recipient-input" placeholder="이름" />
-                        <input type="tel" id="recipientPhone" class="recipient-input" placeholder="전화번호" />
-                        <textarea id="recipientAddress" class="recipient-input recipient-textarea" placeholder="주소" rows="2"></textarea>
+                <div class="shipping-info-form-section">
+                    <h3 class="shipping-title">📦 배송 정보</h3>
+                    <div class="shipping-form">
+                        <input type="text" id="shippingName" class="shipping-input" placeholder="성함을 입력하세요" />
+                        <input type="tel" id="shippingPhone" class="shipping-input" placeholder="전화번호를 입력하세요 (예: 13812345678)" />
+                        
+                        <div class="region-select-group">
+                            <label class="region-label">
+                                <input type="radio" name="shippingRegion" value="shanghai" class="region-radio" checked onchange="updateShippingFee()">
+                                <span class="region-text">🏛️ 상하이 지역 (上海地区)</span>
+                            </label>
+                            <label class="region-label">
+                                <input type="radio" name="shippingRegion" value="other" class="region-radio" onchange="updateShippingFee()">
+                                <span class="region-text">🗺️ 기타 지역 (其他地区)</span>
+                            </label>
+                        </div>
+                        
+                        <textarea id="shippingAddress" class="shipping-input shipping-textarea" placeholder="상세 주소를 입력하세요" rows="2"></textarea>
                     </div>
                 </div>
-                <div class="shipping-info-section">
-                    <p class="shipping-info-text">
-                        🚚 모든 제품은 <strong>SF(순풍)</strong>을 이용해 배송됩니다.<br>
-                        상해 전지역은 제품가격에 <strong>6위안</strong>이 추가되며<br>
-                        기타 지역은 <strong>10위안</strong>이 추가됩니다.<br>
-                        💝 <strong>200위안</strong> 이상 구매 시 <strong>무료 배송</strong>!
+                <div class="delivery-note-section">
+                    <p class="delivery-note">
+                        🚚 모든 제품은 <strong>SF(순풍)</strong>을 이용해 배송됩니다.
                     </p>
                 </div>
-                <div class="cart-total">
-                    <span>총 금액</span>
-                    <span class="total-price" id="totalPrice">¥0</span>
+                <div class="payment-summary">
+                    <div class="summary-row">
+                        <span class="summary-label">상품 금액</span>
+                        <span class="summary-value" id="productAmount">¥0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">배송비</span>
+                        <span class="summary-value" id="shippingFee">+6 RMB</span>
+                    </div>
+                    <div class="summary-divider"></div>
+                    <div class="summary-row total-row">
+                        <span class="summary-label">총 결제 금액</span>
+                        <span class="total-price" id="totalPrice">¥0</span>
+                    </div>
                 </div>
                 <button class="order-btn" onclick="showPaymentModal()">🎅 크리스마스 선물 주문하기</button>
             </div>
