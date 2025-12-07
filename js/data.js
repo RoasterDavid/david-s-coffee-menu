@@ -119,7 +119,7 @@ const productsData = {
             name: '케냐 엠부 AB TOP',
             icon: '🦁',
             badge: null,
-            description: '강렬한 산미와 과일향, 생동감 넘치는 풍미',
+            description: '진한 초콜릿 향과 베리의 달콤한 산미의 조화로운 풍미',
             options: [
                 { size: '100g', price: 55 },
                 { size: '200g', price: 90 }
@@ -335,7 +335,7 @@ const productsData = {
             name: '케냐 엠부 AB TOP',
             icon: '🦁',
             badge: null,
-            description: '강렬한 산미와 과일향, 생동감 넘치는 풍미',
+            description: '진한 초콜릿 향과 베리의 달콤한 산미의 조화로운 풍미',
             options: [
                 { size: '5개/박스', price: 55 },
                 { size: '8개/박스', price: 85 }
