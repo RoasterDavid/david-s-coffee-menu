@@ -4,103 +4,47 @@
     box-sizing: border-box;
 }
 
-/* 눈 내리는 효과 */
-.snowfall {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 9999;
-    background-image: 
-        radial-gradient(circle, white 1px, transparent 1px),
-        radial-gradient(circle, white 1px, transparent 1px),
-        radial-gradient(circle, white 0.5px, transparent 0.5px);
-    background-size: 200px 200px, 300px 300px, 150px 150px;
-    background-position: 0 0, 40px 60px, 130px 270px;
-    animation: snowfall 20s linear infinite;
-    opacity: 0.6;
-}
-
-@keyframes snowfall {
-    0% {
-        background-position: 0 0, 40px 60px, 130px 270px;
-    }
-    100% {
-        background-position: 200px 200px, 240px 260px, 330px 470px;
-    }
-}
-
-/* 크리스마스 배너 */
-.christmas-banner {
-    background: linear-gradient(90deg, var(--christmas-red), var(--christmas-gold), var(--christmas-green), var(--christmas-gold), var(--christmas-red));
-    background-size: 200% 100%;
-    color: white;
+/* 푸터 */
+.site-footer {
+    background: linear-gradient(135deg, var(--caramel-brown) 0%, var(--dark-caramel) 100%);
+    color: var(--cream-white);
     text-align: center;
-    padding: 12px 20px;
-    font-weight: 700;
-    font-size: 16px;
-    animation: shimmer-banner 3s linear infinite;
-    box-shadow: 0 2px 10px var(--shadow);
-    position: sticky;
-    top: 0;
-    z-index: 1001;
-}
-
-@keyframes shimmer-banner {
-    0% {
-        background-position: 0% 50%;
-    }
-    100% {
-        background-position: 200% 50%;
-    }
-}
-
-/* 크리스마스 푸터 */
-.christmas-footer {
-    background: linear-gradient(135deg, var(--dark-red) 0%, var(--christmas-red) 50%, var(--dark-green) 100%);
-    color: white;
-    text-align: center;
-    padding: 30px 20px;
+    padding: 25px 20px;
     margin-top: 40px;
     box-shadow: 0 -4px 20px var(--shadow);
 }
 
-.christmas-footer p {
-    font-size: 18px;
-    font-weight: 700;
+.site-footer p {
+    font-size: 15px;
+    font-weight: 500;
     margin-bottom: 8px;
 }
 
-.christmas-footer .footer-subtitle {
-    font-size: 14px;
-    font-weight: 400;
+.site-footer .footer-contact {
+    font-size: 13px;
     opacity: 0.9;
 }
 
 :root {
-    --christmas-red: #C41E3A;
-    --dark-red: #8B0000;
-    --christmas-green: #0F5132;
-    --dark-green: #2D5016;
-    --christmas-gold: #FFD700;
-    --dark-gold: #DAA520;
-    --snow-white: #FFFAFA;
-    --light-pink: #FFF5F5;
-    --text-dark: #2C2416;
-    --shadow: rgba(196, 30, 58, 0.15);
-    --shadow-hover: rgba(196, 30, 58, 0.35);
-    --gold-shadow: rgba(255, 215, 0, 0.3);
+    --warm-beige: #F5E6D3;
+    --light-beige: #E8D5C4;
+    --caramel-brown: #A67B5B;
+    --dark-caramel: #8B6F47;
+    --terracotta: #C17B5C;
+    --soft-terracotta: #B87A5A;
+    --cream-white: #FFFEF0;
+    --light-cream: #FFF8F0;
+    --deep-brown: #4A3428;
+    --medium-brown: #6B4423;
+    --shadow: rgba(139, 111, 71, 0.15);
+    --shadow-hover: rgba(139, 111, 71, 0.25);
+    --gold: #DAA520;
 }
 
 body {
     font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: var(--light-pink);
-    background-image: 
-        radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(196, 30, 58, 0.05) 0%, transparent 50%);
-    color: var(--text-dark);
+    background: linear-gradient(135deg, var(--cream-white) 0%, var(--light-cream) 50%, var(--warm-beige) 100%);
+    color: var(--deep-brown);
     min-height: 100vh;
     padding-bottom: 80px;
     position: relative;
@@ -108,12 +52,12 @@ body {
 
 /* 헤더 */
 .header {
-    background: linear-gradient(135deg, var(--dark-red) 0%, var(--christmas-red) 50%, var(--dark-green) 100%);
+    background: linear-gradient(135deg, var(--dark-caramel) 0%, var(--caramel-brown) 100%);
     color: white;
     padding: 20px 0;
     box-shadow: 0 4px 15px var(--shadow);
     position: sticky;
-    top: 50px;
+    top: 0;
     z-index: 1000;
 }
 
@@ -210,19 +154,19 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     position: sticky;
-    top: 145px;
-    background: linear-gradient(135deg, var(--snow-white) 0%, var(--light-pink) 100%);
+    top: 85px;
+    background: linear-gradient(135deg, var(--cream-white) 0%, var(--light-beige) 100%);
     z-index: 998;
-    border-bottom: 3px solid var(--christmas-gold);
+    border-bottom: 3px solid var(--caramel-brown);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .tab-btn {
     flex: 1;
     padding: 12px 20px;
-    border: 2px solid var(--christmas-gold);
+    border: 2px solid var(--caramel-brown);
     background: white;
-    color: var(--christmas-red);
+    color: var(--deep-brown);
     font-size: 16px;
     font-weight: 600;
     border-radius: 10px;
@@ -231,9 +175,9 @@ body {
 }
 
 .tab-btn.active {
-    background: linear-gradient(135deg, var(--christmas-red) 0%, var(--dark-red) 100%);
+    background: linear-gradient(135deg, var(--caramel-brown) 0%, var(--dark-caramel) 100%);
     color: white;
-    border-color: var(--christmas-gold);
+    border-color: var(--caramel-brown);
     box-shadow: 0 4px 10px var(--shadow);
 }
 
@@ -287,52 +231,18 @@ body {
 }
 
 .product-card:hover {
-    border-color: var(--christmas-gold);
-    box-shadow: 0 6px 20px var(--shadow-hover), 0 0 15px var(--gold-shadow);
+    border-color: var(--caramel-brown);
+    box-shadow: 0 6px 20px var(--shadow-hover);
     transform: translateY(-2px);
-}
-
-.product-card.christmas-special {
-    border: 3px solid var(--christmas-gold);
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
-    background: linear-gradient(135deg, #fff9f0 0%, #ffffff 100%);
-    animation: card-glow 2s ease-in-out infinite;
 }
 
 @keyframes card-glow {
     0%, 100% {
-        box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        box-shadow: 0 6px 20px rgba(166, 123, 91, 0.3);
     }
     50% {
-        box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6), 0 0 20px rgba(255, 215, 0, 0.3);
+        box-shadow: 0 8px 25px rgba(166, 123, 91, 0.4);
     }
-}
-
-.product-card.christmas-special .product-header {
-    background: linear-gradient(135deg, #8B0000 0%, #DC143C 100%);
-}
-
-.product-card.christmas-special .product-icon {
-    font-size: 32px;
-}
-
-.product-card.christmas-special .product-name {
-    color: white;
-    font-size: 15px;
-    font-weight: 700;
-}
-
-.product-card.christmas-special .product-description {
-    color: rgba(255, 255, 255, 0.95);
-    font-size: 12px;
-}
-
-.christmas-subtitle {
-    font-size: 11px;
-    color: rgba(255, 255, 255, 0.9);
-    font-weight: 500;
-    margin-top: 2px;
-    font-style: italic;
 }
 
 .highlight-text {
@@ -419,16 +329,16 @@ body {
 }
 
 .badge-best {
-    background: linear-gradient(135deg, var(--christmas-red), var(--dark-red));
+    background: linear-gradient(135deg, var(--gold) 0%, #c5a028 100%);
     color: white;
-    border: 2px solid var(--christmas-gold);
-    box-shadow: 0 2px 8px var(--gold-shadow);
+    border: 2px solid var(--gold);
+    box-shadow: 0 2px 8px rgba(218, 165, 32, 0.4);
 }
 
 .badge-new {
-    background: linear-gradient(135deg, var(--christmas-green), var(--dark-green));
+    background: linear-gradient(135deg, var(--terracotta) 0%, var(--soft-terracotta) 100%);
     color: white;
-    box-shadow: 0 2px 8px rgba(15, 81, 50, 0.4);
+    box-shadow: 0 2px 8px rgba(193, 123, 92, 0.4);
 }
 
 .badge-discount {
@@ -529,12 +439,12 @@ body {
 }
 
 .product-header {
-    background: linear-gradient(135deg, #fff5f0 0%, #ffe8e0 100%);
+    background: linear-gradient(135deg, var(--warm-beige) 0%, var(--light-beige) 100%);
     padding: 12px;
     display: flex;
     align-items: center;
     gap: 10px;
-    border-bottom: 1px solid rgba(196, 30, 58, 0.1);
+    border-bottom: 1px solid var(--shadow);
 }
 
 .product-icon {
@@ -582,7 +492,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 8px 10px;
-    background: #fffaf5;
+    background: var(--cream-white);
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.2s;
@@ -590,13 +500,13 @@ body {
 }
 
 .option-row:hover {
-    background: #ffe8e0;
-    border-color: var(--christmas-gold);
+    background: var(--light-beige);
+    border-color: var(--caramel-brown);
 }
 
 .option-row.selected {
-    border-color: var(--christmas-red);
-    background: #ffe8e0;
+    border-color: var(--caramel-brown);
+    background: var(--light-beige);
     box-shadow: 0 2px 8px var(--shadow);
 }
 
@@ -609,14 +519,14 @@ body {
 .option-price {
     font-size: 14px;
     font-weight: 700;
-    color: var(--christmas-red);
+    color: var(--deep-brown);
     display: flex;
     align-items: center;
     gap: 6px;
 }
 
 .option-price::before {
-    content: '🎁 ';
+    content: '☕ ';
     font-size: 12px;
 }
 
@@ -644,7 +554,7 @@ body {
     width: 100%;
     margin-top: 8px;
     padding: 12px;
-    background: linear-gradient(135deg, var(--christmas-red) 0%, var(--dark-red) 100%);
+    background: linear-gradient(135deg, var(--dark-caramel) 0%, var(--caramel-brown) 100%);
     color: white;
     border: none;
     border-radius: 6px;
@@ -655,7 +565,7 @@ body {
 }
 
 .add-to-cart-btn::before {
-    content: '🔔 ';
+    content: '📦 ';
 }
 
 .add-to-cart-btn:active {
@@ -690,7 +600,7 @@ body {
 
 .cart-header {
     padding: 20px;
-    background: linear-gradient(135deg, var(--christmas-red) 0%, var(--dark-red) 100%);
+    background: linear-gradient(135deg, var(--dark-caramel) 0%, var(--caramel-brown) 100%);
     color: white;
     display: flex;
     justify-content: space-between;
@@ -915,8 +825,8 @@ body {
 }
 
 .region-label:hover {
-    border-color: var(--christmas-gold);
-    background: #fffaf5;
+    border-color: var(--caramel-brown);
+    background: var(--light-cream);
 }
 
 .region-radio {
@@ -924,7 +834,7 @@ body {
     width: 18px;
     height: 18px;
     cursor: pointer;
-    accent-color: var(--christmas-red);
+    accent-color: var(--caramel-brown);
 }
 
 .region-text {
@@ -949,7 +859,7 @@ body {
 }
 
 .delivery-note strong {
-    color: var(--christmas-red);
+    color: var(--caramel-brown);
     font-weight: 600;
 }
 
@@ -977,7 +887,7 @@ body {
 
 .summary-divider {
     height: 2px;
-    background: linear-gradient(90deg, transparent, var(--christmas-gold), transparent);
+    background: linear-gradient(90deg, transparent, var(--caramel-brown), transparent);
     margin: 10px 0;
 }
 
@@ -993,20 +903,20 @@ body {
 
 .total-price {
     font-size: 24px;
-    color: var(--christmas-red);
+    color: var(--caramel-brown);
     font-weight: 700;
 }
 
 .total-price::before {
-    content: '🎁 ';
+    content: '☕ ';
 }
 
 .order-btn {
     width: 100%;
     padding: 16px;
-    background: linear-gradient(135deg, var(--christmas-red) 0%, var(--dark-red) 100%);
+    background: linear-gradient(135deg, var(--dark-caramel) 0%, var(--caramel-brown) 100%);
     color: white;
-    border: 2px solid var(--christmas-gold);
+    border: 2px solid var(--caramel-brown);
     border-radius: 10px;
     font-size: 18px;
     font-weight: 600;
@@ -1016,7 +926,7 @@ body {
 }
 
 .order-btn:hover {
-    background: linear-gradient(135deg, var(--dark-red), #6B0000);
+    background: linear-gradient(135deg, #6B4423, var(--dark-caramel));
     box-shadow: 0 6px 20px var(--shadow-hover);
     transform: translateY(-2px);
 }
