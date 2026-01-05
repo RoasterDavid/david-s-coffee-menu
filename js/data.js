@@ -7,7 +7,7 @@ const productsData = {
             name: '에티오피아 벤치 마지 게이샤 G1',
             icon: '💎',
             badge: 'new',
-            description: '화이트 플로럴과 자스민의 섬세한 향, 엘레강스한 여운',
+            description: '섬세한 재스민 꽃향과 복숭아의 달콤함이 어우러진 우아한 풍미',
             options: [
                 { size: '100g', price: 60 },
                 { size: '200g', price: 100 }
@@ -18,7 +18,7 @@ const productsData = {
             name: '에티오피아 예가체프 반코 고티티 G1',
             icon: '🌸',
             badge: 'new',
-            description: '피치와 베르가못의 달콤함, 실키한 바디감',
+            description: '밝은 베리향과 은은한 꽃향이 조화를 이루는 부드러운 산미',
             options: [
                 { size: '100g', price: 60 },
                 { size: '200g', price: 100 }
@@ -29,7 +29,7 @@ const productsData = {
             name: '온두라스 오팔라카 SHG',
             icon: '☕',
             badge: 'new',
-            description: '견과와 초콜릿의 부드러운 조화',
+            description: '고소한 견과류와 밀크초콜릿의 부드럽고 균형잡힌 맛',
             options: [
                 { size: '100g', price: 50 },
                 { size: '200g', price: 80 }
@@ -41,7 +41,7 @@ const productsData = {
             name: '킹스블랜드 No.2',
             icon: '👑',
             badge: 'best',
-            description: '부드러운 초콜릿과 캐러멜의 조화로운 블렌딩',
+            description: '부드러운 초콜릿과 캐러멜의 달콤함이 균형있게 어우러진 블랜드',
             options: [
                 { size: '100g', price: 40 },
                 { size: '200g', price: 70 }
@@ -49,10 +49,10 @@ const productsData = {
         },
         {
             id: 'bean-5',
-            name: '인도네시아 가요 만델링 G1',
+            name: '인도네시아 가요 만델링 G1 SC19',
             icon: '🏝️',
             badge: 'best',
-            description: '묵직한 바디감과 허브향, 깊은 다크 초콜릿',
+            description: '깊은 흙향과 다크초콜릿의 묵직한 바디감이 느껴지는 진한 풍미',
             options: [
                 { size: '100g', price: 55 },
                 { size: '200g', price: 90 }
@@ -64,7 +64,7 @@ const productsData = {
             name: '킹스블랜드 No.1',
             icon: '👑',
             badge: null,
-            description: '견과류의 고소함과 부드러운 질감의 베스트셀러',
+            description: '고소한 견과류와 다크초콜릿, 카라멜의 조화로운 블랜드',
             options: [
                 { size: '100g', price: 40 },
                 { size: '200g', price: 70 }
@@ -72,10 +72,10 @@ const productsData = {
         },
         {
             id: 'bean-7',
-            name: '콜롬비아 후일라 수프리모',
+            name: '콜롬비아 후일라 산 어거스틴 수프리모',
             icon: '☕',
             badge: null,
-            description: '깔끔한 산미와 카라멜 단맛의 클래식한 맛',
+            description: '바닐라와 꿀의 달콤함에 부드러운 초콜릿이 감도는 균형잡힌 풍미',
             options: [
                 { size: '100g', price: 45 },
                 { size: '200g', price: 75 }
@@ -86,7 +86,7 @@ const productsData = {
             name: '케냐 니에리 스카 AA',
             icon: '🦁',
             badge: null,
-            description: '블랙커런트와 토마토의 독특한 산미와 풍미',
+            description: '블랙커런트와 체리의 생동감 있는 산미에 와인향이 감도는 풍부한 풍미',
             options: [
                 { size: '100g', price: 50 },
                 { size: '200g', price: 80 }
@@ -97,7 +97,7 @@ const productsData = {
             name: '코스타리카 센트럴밸리 뜨레스 누베스 SHB',
             icon: '☁️',
             badge: null,
-            description: '시트러스한 산미와 부드러운 바디의 균형미',
+            description: '시트러스의 상큼함과 꿀의 단맛이 어우러진 깔끔한 뒷맛',
             options: [
                 { size: '100g', price: 50 },
                 { size: '200g', price: 80 }
@@ -108,7 +108,7 @@ const productsData = {
             name: '콜롬비아 슈가케인 디카페인',
             icon: '🌾',
             badge: null,
-            description: '카페인 없이 즐기는 달콤한 슈가케인 풍미',
+            description: '은은한 단맛과 부드러운 견과류 향이 느껴지는 편안한 디카페인',
             options: [
                 { size: '100g', price: 55 },
                 { size: '200g', price: 85 }
@@ -119,7 +119,7 @@ const productsData = {
             name: '케냐 엠부 AB TOP',
             icon: '🦁',
             badge: null,
-            description: '진한 초콜릿 향과 베리의 달콤한 산미의 조화로운 풍미',
+            description: '베리의 상큼함과 홍차의 깊이가 어우러진 복합적인 풍미',
             options: [
                 { size: '100g', price: 55 },
                 { size: '200g', price: 90 }
@@ -130,7 +130,7 @@ const productsData = {
             name: '파나마 볼칸 바루 팔로마 SHB',
             icon: '🌺',
             badge: null,
-            description: '밝은 감귤향과 꿀의 단맛, 균형잡힌 바디감',
+            description: '밝은 시트러스와 재스민 꽃향이 어우러진 산뜻하고 우아한 맛',
             options: [
                 { size: '100g', price: 60 },
                 { size: '200g', price: 100 }
@@ -141,7 +141,7 @@ const productsData = {
             name: '콜롬비아 네바다 코코넛 버터 무산소발효',
             icon: '🥥',
             badge: null,
-            description: '독특한 코코넛과 버터의 크리미한 열대 풍미',
+            description: '크리미한 코코넛과 버터의 달콤함에 바닐라 향이 감도는 디저트 같은 풍미',
             options: [
                 { size: '100g', price: 70 },
                 { size: '200g', price: 130 }
@@ -185,26 +185,6 @@ const productsData = {
         }
     ],
     drip: [
-        // 한정판 (최상단)
-        {
-            id: 'drip-holiday',
-            name: 'HOLIDAY ROAST',
-            icon: '🎄',
-            badge: 'limited',
-            isChristmasSpecial: true,
-            subtitle: '크리스마스 & 신년 특별 에디션',
-            highlight: '따뜻하고 달콤한 디저트풍의 커피',
-            description: '❄️ 5가지 프리미엄 원두 × 2개씩 = 10개/박스',
-            detailedDescription: `📦 포함된 원두:
-☕ COSTARICA BLUE MINT - 상쾌한 블루베리와 민트의 청량감
-☕ COLOMBIA RUM BARREL - 럼의 깊은 풍미가 느껴지는 배럴 숙성의 복합미
-☕ COLOMBIA COCONUT BUTTER - 코코넛과 버터의 달콤하고 부드러운 디저트 풍미
-☕ HONDURAS WHISKEY BARREL - 위스키와 부드러운 크림의 조화로움
-☕ COLOMBIA ORANGE WINE - 오렌지 꽃향기와 와인의 복합적인 풍미`,
-            options: [
-                { size: '10개/박스', price: 120 }
-            ]
-        },
         // BEST 그룹
         {
             id: 'drip-1',
@@ -223,7 +203,7 @@ const productsData = {
             name: '킹스블랜드 No.2',
             icon: '👑',
             badge: 'best',
-            description: '부드러운 초콜릿과 캐러멜의 조화로운 블랜딩',
+            description: '부드러운 초콜릿과 캐러멜의 달콤함이 균형있게 어우러진 블랜드',
             options: [
                 { size: '5개/박스', price: 40 },
                 { size: '8개/박스', price: 70 }
@@ -235,7 +215,7 @@ const productsData = {
             name: '에티오피아 벤치 마지 게이샤 G1',
             icon: '💎',
             badge: 'new',
-            description: '화이트 플로럴과 자스민의 섬세한 향, 엘레강스한 여운',
+            description: '섬세한 재스민 꽃향과 복숭아의 달콤함이 어우러진 우아한 풍미',
             options: [
                 { size: '5개/박스', price: 60 },
                 { size: '8개/박스', price: 90 }
@@ -246,7 +226,7 @@ const productsData = {
             name: '에티오피아 예가체프 반코 고티티 G1',
             icon: '🌸',
             badge: 'new',
-            description: '피치와 베르가못의 달콤함, 실키한 바디감',
+            description: '밝은 베리향과 은은한 꽃향이 조화를 이루는 부드러운 산미',
             options: [
                 { size: '5개/박스', price: 60 },
                 { size: '8개/박스', price: 90 }
@@ -257,7 +237,7 @@ const productsData = {
             name: '온두라스 오팔라카 SHG',
             icon: '☕',
             badge: 'new',
-            description: '견과와 초콜릿의 부드러운 조화',
+            description: '고소한 견과류와 밀크초콜릿의 부드럽고 균형잡힌 맛',
             options: [
                 { size: '5개/박스', price: 50 },
                 { size: '8개/박스', price: 80 }
@@ -269,7 +249,7 @@ const productsData = {
             name: '킹스블랜드 No.1',
             icon: '👑',
             badge: null,
-            description: '견과류의 고소함과 부드러운 질감의 베스트셀러',
+            description: '고소한 견과류와 다크초콜릿, 카라멜의 조화로운 블랜드',
             options: [
                 { size: '5개/박스', price: 40 },
                 { size: '8개/박스', price: 70 }
@@ -277,10 +257,10 @@ const productsData = {
         },
         {
             id: 'drip-7',
-            name: '콜롬비아 후일라 수프리모',
+            name: '콜롬비아 후일라 산 어거스틴 수프리모',
             icon: '☕',
             badge: null,
-            description: '깔끔한 산미와 카라멜 단맛의 클래식한 맛',
+            description: '바닐라와 꿀의 달콤함에 부드러운 초콜릿이 감도는 균형잡힌 풍미',
             options: [
                 { size: '5개/박스', price: 50 },
                 { size: '8개/박스', price: 70 }
@@ -291,7 +271,7 @@ const productsData = {
             name: '케냐 니에리 스카 AA',
             icon: '🦁',
             badge: null,
-            description: '블랙커런트와 토마토의 독특한 산미와 풍미',
+            description: '블랙커런트와 체리의 생동감 있는 산미에 와인향이 감도는 풍부한 풍미',
             options: [
                 { size: '5개/박스', price: 50 },
                 { size: '8개/박스', price: 80 }
@@ -302,7 +282,7 @@ const productsData = {
             name: '코스타리카 센트럴밸리 뜨레스 누베스 SHB',
             icon: '☁️',
             badge: null,
-            description: '시트러스한 산미와 부드러운 바디의 균형미',
+            description: '시트러스의 상큼함과 꿀의 단맛이 어우러진 깔끔한 뒷맛',
             options: [
                 { size: '5개/박스', price: 50 },
                 { size: '8개/박스', price: 80 }
@@ -313,7 +293,7 @@ const productsData = {
             name: '콜롬비아 슈가케인 디카페인',
             icon: '🌾',
             badge: null,
-            description: '카페인 없이 즐기는 달콤한 슈가케인 풍미',
+            description: '은은한 단맛과 부드러운 견과류 향이 느껴지는 편안한 디카페인',
             options: [
                 { size: '5개/박스', price: 50 },
                 { size: '8개/박스', price: 80 }
@@ -321,10 +301,10 @@ const productsData = {
         },
         {
             id: 'drip-5',
-            name: '인도네시아 가요 만델링 G1',
+            name: '인도네시아 가요 만델링 G1 SC19',
             icon: '🏝️',
             badge: null,
-            description: '묵직한 바디감과 허브향, 깊은 다크 초콜릿',
+            description: '깊은 흙향과 다크초콜릿의 묵직한 바디감이 느껴지는 진한 풍미',
             options: [
                 { size: '5개/박스', price: 55 },
                 { size: '8개/박스', price: 90 }
@@ -335,7 +315,7 @@ const productsData = {
             name: '케냐 엠부 AB TOP',
             icon: '🦁',
             badge: null,
-            description: '진한 초콜릿 향과 베리의 달콤한 산미의 조화로운 풍미',
+            description: '베리의 상큼함과 홍차의 깊이가 어우러진 복합적인 풍미',
             options: [
                 { size: '5개/박스', price: 55 },
                 { size: '8개/박스', price: 85 }
@@ -346,7 +326,7 @@ const productsData = {
             name: '파나마 볼칸 바루 팔로마 SHB',
             icon: '🌺',
             badge: null,
-            description: '밝은 감귤향과 꿀의 단맛, 균형잡힌 바디감',
+            description: '밝은 시트러스와 재스민 꽃향이 어우러진 산뜻하고 우아한 맛',
             options: [
                 { size: '5개/박스', price: 60 },
                 { size: '8개/박스', price: 90 }
@@ -354,10 +334,10 @@ const productsData = {
         },
         {
             id: 'drip-13',
-            name: '콜롬비아 네바다 코코넛 버터',
+            name: '콜롬비아 네바다 코코넛 버터 무산소발효',
             icon: '🥥',
             badge: null,
-            description: '독특한 코코넛과 버터의 크리미한 열대 풍미',
+            description: '크리미한 코코넛과 버터의 달콤함에 바닐라 향이 감도는 디저트 같은 풍미',
             options: [
                 { size: '5개/박스', price: 65 },
                 { size: '8개/박스', price: 100 }
