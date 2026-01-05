@@ -392,7 +392,7 @@ function generateOrderDetails(shippingName, shippingPhone, shippingAddress, sele
     orderText += `──────────────────────\n`;
     orderText += `총 결제 금액: ¥${totalPrice}\n\n`;
     orderText += `결제 방법: 위챗페이\n`;
-    orderText += `연락처: david_han76@outlook.com\n`;
+    orderText += `연락처: davids_coffee@outlook.com\n`;
     
     return orderText;
 }
