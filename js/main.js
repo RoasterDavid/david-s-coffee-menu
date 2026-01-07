@@ -1,186 +1,58 @@
-// 선택된 옵션 추적
-const selectedOptions = {};
+// David's Coffee - Main UI & Event Handlers
+// UI 렌더링 및 이벤트 처리
+
+// 현재 선택된 탭
+let currentTab = 'beans';
 
 // 탭 전환
-function switchTab(tabName) {
-    // 탭 버튼 활성화
-    const tabButtons = document.querySelectorAll('.tab-btn');
-    tabButtons.forEach(btn => btn.classList.remove('active'));
+function switchTab(tab) {
+    currentTab = tab;
     
-    // 탭 이름으로 버튼 찾아서 활성화
-    const targetButton = tabName === 'beans' 
-        ? document.querySelector('.tab-btn[onclick*="beans"]')
-        : document.querySelector('.tab-btn[onclick*="drip"]');
-    
-    if (targetButton) {
-        targetButton.classList.add('active');
-    }
+    // 탭 버튼 활성화 상태 변경
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    event.target.classList.add('active');
     
     // 섹션 표시/숨김
-    const sections = document.querySelectorAll('.products-section');
-    sections.forEach(section => section.classList.remove('active'));
-    
-    if (tabName === 'beans') {
-        document.getElementById('beans-section').classList.add('active');
-    } else if (tabName === 'drip') {
-        document.getElementById('drip-section').classList.add('active');
-    }
+    document.querySelectorAll('.products-section').forEach(section => {
+        section.classList.remove('active');
+    });
+    document.getElementById(`${tab}-section`).classList.add('active');
 }
 
-// 현재 활성화된 탭 가져오기
-function getCurrentTab() {
-    const beansSection = document.getElementById('beans-section');
-    return beansSection.classList.contains('active') ? 'beans' : 'drip';
-}
-
-// 스와이프 제스처 감지
-let touchStartX = 0;
-let touchEndX = 0;
-let touchStartY = 0;
-let touchEndY = 0;
-
-function handleSwipeGesture() {
-    const swipeThreshold = 50; // 최소 스와이프 거리
-    const verticalThreshold = 30; // 수직 이동 허용 범위
-    
-    const horizontalDistance = touchEndX - touchStartX;
-    const verticalDistance = Math.abs(touchEndY - touchStartY);
-    
-    // 수직 스크롤이 너무 크면 스와이프로 인식하지 않음
-    if (verticalDistance > verticalThreshold) {
-        return;
-    }
-    
-    const currentTab = getCurrentTab();
-    
-    // 왼쪽으로 스와이프 (다음 탭)
-    if (horizontalDistance < -swipeThreshold) {
-        if (currentTab === 'beans') {
-            switchTab('drip');
-        }
-    }
-    
-    // 오른쪽으로 스와이프 (이전 탭)
-    if (horizontalDistance > swipeThreshold) {
-        if (currentTab === 'drip') {
-            switchTab('beans');
-        }
-    }
-}
-
-// 제품 카드 렌더링
-function renderProducts() {
-    // 원두 렌더링
-    const beansContainer = document.getElementById('beansProducts');
-    beansContainer.innerHTML = productsData.beans.map(product => createProductCard(product, 'beans')).join('');
-    
-    // 드립백 렌더링
-    const dripContainer = document.getElementById('dripProducts');
-    dripContainer.innerHTML = productsData.drip.map(product => createProductCard(product, 'drip')).join('');
-}
-
-// 제품 카드 HTML 생성
+// 제품 카드 생성
 function createProductCard(product, type) {
-    // 품절 처리
-    const isSoldOut = product.soldOut === true;
-    const isAlmostSoldOut = product.almostSoldOut === true;
-    const soldOutClass = isSoldOut ? 'sold-out' : '';
+    const soldOutClass = product.soldOut ? 'sold-out' : '';
+    const badge = product.badge ? `<span class="badge ${product.badge}">${product.badge}</span>` : '';
     
-    // 배지 처리 (여러 배지 동시 표시 가능)
-    let badgeHTML = '';
-    
-    if (isSoldOut) {
-        // SEASON OUT은 단독 표시
-        badgeHTML = `
-            <div class="product-badge badge-soldout">
-                SEASON OUT
-            </div>
-        `;
-    } else {
-        // 일반 배지 + 품절임박 동시 표시
-        const badges = [];
-        
-        if (product.badge) {
-            let badgeText = '';
-            if (product.badge === 'best') {
-                badgeText = 'BEST';
-            } else if (product.badge === 'new') {
-                badgeText = 'NEW';
-            } else if (product.badge === 'discount') {
-                badgeText = '🔥 10% 특가';
-            } else if (product.badge === 'limited') {
-                badgeText = '⭐ 한정판매';
-            }
-            
-            badges.push(`
-                <div class="product-badge badge-${product.badge}">
-                    ${badgeText}
-                </div>
-            `);
-        }
-        
-        if (isAlmostSoldOut) {
-            badges.push(`
-                <div class="product-badge badge-almostsoldout" style="top: ${product.badge ? '38px' : '8px'};">
-                    품절임박
-                </div>
-            `);
-        }
-        
-        badgeHTML = badges.join('');
-    }
-    
-    // 옵션 HTML 생성 (할인율 포함)
-    const optionsHTML = product.options.map((option, index) => {
-        let priceHTML = `¥${option.price}`;
-        
-        // 특별 할인 가격 표시 (originalPrice가 있는 경우만)
-        if (option.originalPrice) {
-            priceHTML = `
-                <span class="original-price">¥${option.originalPrice}</span>
-                <span class="sale-price">¥${option.price}</span>
-            `;
-        }
-        
-        return `
-            <div class="option-row" 
-                 data-product-id="${product.id}" 
-                 data-option-index="${index}"
-                 onclick="${isSoldOut ? '' : `selectOption('${product.id}', ${index}, '${type}')`}">
-                <span class="option-label">${option.size}</span>
-                <span class="option-price">${priceHTML}</span>
-            </div>
-        `;
-    }).join('');
-    
-    const buttonText = isSoldOut ? 'SEASON OUT' : '옵션을 선택하세요';
-    const christmasClass = product.isChristmasSpecial ? 'christmas-special' : '';
-    const subtitleHTML = product.subtitle ? `<div class="christmas-subtitle">${product.subtitle}</div>` : '';
-    const highlightHTML = product.highlight ? `<div class="highlight-text">${product.highlight}</div>` : '';
-    const detailedDescriptionHTML = product.detailedDescription ? `<div class="detailed-description">${product.detailedDescription}</div>` : '';
+    // 옵션 버튼들 생성
+    const optionsHTML = product.options.map((option, index) => `
+        <button class="option-btn" 
+                onclick="selectOption(event, '${product.id}', '${option.size}', ${option.price})">
+            <span class="option-size">${option.size}</span>
+            <span class="option-price">¥${option.price}</span>
+        </button>
+    `).join('');
     
     return `
-        <div class="product-card ${soldOutClass} ${christmasClass}">
-            ${badgeHTML}
-            <div class="product-header">
-                <div class="product-icon">${product.icon}</div>
-                <div class="product-info">
-                    <div class="product-name">${product.name}</div>
-                    ${subtitleHTML}
-                    ${highlightHTML}
-                    <div class="product-description">${product.description}</div>
+        <div class="product-card ${soldOutClass}" data-product-id="${product.id}">
+            <div class="product-info">
+                <div class="product-header">
+                    <div class="product-icon">${product.icon}</div>
+                    <div class="product-title">
+                        ${badge}
+                        <h3 class="product-name">${product.name}</h3>
+                    </div>
                 </div>
-            </div>
-            <div class="product-body">
-                ${detailedDescriptionHTML}
+                <p class="product-description">${product.description}</p>
                 <div class="product-options">
                     ${optionsHTML}
                 </div>
                 <button class="add-to-cart-btn" 
-                        id="add-btn-${product.id}"
-                        onclick="${isSoldOut ? '' : `addProductToCart('${product.id}', '${type}')`}"
-                        disabled>
-                    ${buttonText}
+                        onclick="addProductToCart('${product.id}', '${product.name}', '${type}')"
+                        ${product.soldOut ? 'disabled' : ''}>
+                    ${product.soldOut ? '품절' : '🛒 장바구니에 담기'}
                 </button>
             </div>
         </div>
@@ -188,104 +60,111 @@ function createProductCard(product, type) {
 }
 
 // 옵션 선택
-function selectOption(productId, optionIndex, type) {
-    // 같은 제품의 다른 옵션 선택 해제
-    const allOptions = document.querySelectorAll(`[data-product-id="${productId}"]`);
-    allOptions.forEach(option => option.classList.remove('selected'));
+function selectOption(event, productId, size, price) {
+    const productCard = event.target.closest('.product-card');
+    const buttons = productCard.querySelectorAll('.option-btn');
     
-    // 선택한 옵션 활성화
-    const selectedOption = document.querySelector(`[data-product-id="${productId}"][data-option-index="${optionIndex}"]`);
-    selectedOption.classList.add('selected');
+    // 모든 옵션 버튼 비활성화
+    buttons.forEach(btn => btn.classList.remove('selected'));
     
-    // 선택된 옵션 저장
-    selectedOptions[productId] = {
-        index: optionIndex,
-        type: type
-    };
+    // 클릭한 옵션 버튼 활성화
+    event.target.closest('.option-btn').classList.add('selected');
     
-    // 버튼 활성화
-    const addBtn = document.getElementById(`add-btn-${productId}`);
-    addBtn.disabled = false;
-    addBtn.textContent = '담기';
+    // 선택된 옵션 정보 저장 (data 속성 사용)
+    productCard.setAttribute('data-selected-size', size);
+    productCard.setAttribute('data-selected-price', price);
 }
 
-// 장바구니에 제품 추가
-function addProductToCart(productId, type) {
-    const selectedOption = selectedOptions[productId];
+// 장바구니에 상품 추가
+function addProductToCart(productId, productName, type) {
+    const productCard = document.querySelector(`[data-product-id="${productId}"]`);
+    const selectedButton = productCard.querySelector('.option-btn.selected');
     
-    if (!selectedOption) {
-        showNotification('옵션을 선택해주세요.');
+    // 옵션이 선택되지 않은 경우
+    if (!selectedButton) {
+        alert('옵션을 먼저 선택해주세요!');
         return;
     }
     
-    // 제품 정보 가져오기
-    const product = type === 'beans' 
-        ? productsData.beans.find(p => p.id === productId)
-        : productsData.drip.find(p => p.id === productId);
+    const selectedSize = productCard.getAttribute('data-selected-size');
+    const selectedPrice = parseInt(productCard.getAttribute('data-selected-price'));
     
-    if (!product) return;
-    
-    const option = product.options[selectedOption.index];
-    
-    // 장바구니에 추가
-    addToCart(
-        productId,
-        product.name,
-        option.size,
-        option.price,
-        type
-    );
-    
-    // 선택 초기화
-    const allOptions = document.querySelectorAll(`[data-product-id="${productId}"]`);
-    allOptions.forEach(option => option.classList.remove('selected'));
-    
-    delete selectedOptions[productId];
-    
-    // 버튼 비활성화
-    const addBtn = document.getElementById(`add-btn-${productId}`);
-    addBtn.disabled = true;
-    addBtn.textContent = '옵션을 선택하세요';
+    addToCart(productId, productName, selectedSize, selectedPrice, type);
 }
 
-// 페이지 로드 시 초기화
-document.addEventListener('DOMContentLoaded', () => {
-    renderProducts();
+// 제품 목록 렌더링
+function renderProducts(products, containerId, type) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = products.map(product => createProductCard(product, type)).join('');
+}
+
+// 페이지 초기화
+function initializePage() {
+    // 원두 제품 렌더링
+    renderProducts(productsData.beans, 'beansProducts', 'beans');
     
-    // 모달 외부 클릭 시 닫기
-    const orderModal = document.getElementById('orderModal');
+    // 드립백 제품 렌더링
+    renderProducts(productsData.drip, 'dripProducts', 'drip');
     
-    orderModal.addEventListener('click', (e) => {
-        if (e.target === orderModal) {
-            closeOrderModal();
-        }
-    });
-    
-    // ESC 키로 모달 닫기
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            if (orderModal.classList.contains('active')) {
-                closeOrderModal();
-            }
-            if (document.getElementById('cartSidebar').classList.contains('active')) {
-                toggleCart();
-            }
-        }
-    });
-    
-    // 스와이프 제스처 이벤트 리스너 추가 (모든 컨테이너에 적용)
-    const containers = document.querySelectorAll('.container');
-    
-    containers.forEach(container => {
-        container.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-            touchStartY = e.changedTouches[0].screenY;
-        }, { passive: true });
+    // 장바구니 로드
+    loadCart();
+}
+
+// 모달 외부 클릭 시 닫기
+document.addEventListener('click', (event) => {
+    const modal = document.getElementById('orderModal');
+    if (event.target === modal) {
+        closeOrderModal();
+    }
+});
+
+// ESC 키로 모달 닫기
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+        const modal = document.getElementById('orderModal');
+        const cartSidebar = document.getElementById('cartSidebar');
         
-        container.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            touchEndY = e.changedTouches[0].screenY;
-            handleSwipeGesture();
-        }, { passive: true });
-    });
+        if (modal.classList.contains('active')) {
+            closeOrderModal();
+        } else if (cartSidebar.classList.contains('active')) {
+            toggleCart();
+        }
+    }
+});
+
+// 스와이프 제스처로 탭 전환 (모바일)
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.querySelector('.container').addEventListener('touchstart', (event) => {
+    touchStartX = event.changedTouches[0].screenX;
+}, false);
+
+document.querySelector('.container').addEventListener('touchend', (event) => {
+    touchEndX = event.changedTouches[0].screenX;
+    handleSwipe();
+}, false);
+
+function handleSwipe() {
+    const swipeThreshold = 50;
+    const verticalThreshold = 30;
+    
+    if (touchEndX < touchStartX - swipeThreshold) {
+        // 왼쪽으로 스와이프 -> 드립백으로 이동
+        if (currentTab === 'beans') {
+            document.querySelectorAll('.tab-btn')[1].click();
+        }
+    }
+    
+    if (touchEndX > touchStartX + swipeThreshold) {
+        // 오른쪽으로 스와이프 -> 원두로 이동
+        if (currentTab === 'drip') {
+            document.querySelectorAll('.tab-btn')[0].click();
+        }
+    }
+}
+
+// DOM 로드 완료 시 초기화
+document.addEventListener('DOMContentLoaded', () => {
+    initializePage();
 });
