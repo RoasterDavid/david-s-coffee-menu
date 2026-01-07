@@ -1,76 +1,157 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
-<title>☕ David's Coffee</title>
-<style>*{margin:0;padding:0;box-sizing:border-box}:root{--warm-beige:#F5E6D3;--light-beige:#E8D5C4;--caramel-brown:#A67B5B;--dark-caramel:#8B6F47;--terracotta:#C17B5C;--cream-white:#FFFEF0;--light-cream:#FFF8F0;--deep-brown:#4A3428;--medium-brown:#6B4423;--shadow:rgba(139,111,71,.15);--shadow-hover:rgba(139,111,71,.25);--gold:#DAA520}body{font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:linear-gradient(135deg,var(--cream-white) 0%,var(--light-cream) 50%,var(--warm-beige) 100%);color:var(--deep-brown);min-height:100vh;padding-bottom:80px}.header{background:linear-gradient(135deg,var(--dark-caramel),var(--caramel-brown));color:#fff;padding:20px;text-align:center;box-shadow:0 4px 15px var(--shadow);position:sticky;top:0;z-index:1000}.logo{font-size:26px;font-weight:700;margin-bottom:5px}.subtitle{font-size:14px;opacity:.9}.tabs{display:flex;gap:10px;padding:15px 20px;max-width:1200px;margin:0 auto;position:sticky;top:85px;background:linear-gradient(135deg,var(--cream-white),var(--light-beige));z-index:998;border-bottom:3px solid var(--caramel-brown);box-shadow:0 2px 8px rgba(0,0,0,.1)}.tab-btn{flex:1;padding:12px 20px;border:2px solid var(--caramel-brown);background:#fff;color:var(--deep-brown);font-size:16px;font-weight:600;border-radius:10px;cursor:pointer;transition:all .3s}.tab-btn.active{background:linear-gradient(135deg,var(--caramel-brown),var(--dark-caramel));color:#fff;box-shadow:0 4px 10px var(--shadow)}.products-section{display:none;padding:20px}.products-section.active{display:block}.container{max-width:1200px;margin:0 auto;padding:0 20px}.products-grid{display:grid;grid-template-columns:1fr;gap:15px}.product-card{background:#fff;border-radius:15px;overflow:hidden;box-shadow:0 4px 15px var(--shadow);transition:all .3s;position:relative;border:2px solid transparent}.product-card:hover{border-color:var(--caramel-brown);box-shadow:0 6px 20px var(--shadow-hover);transform:translateY(-2px)}.product-card.sold-out{opacity:.7;pointer-events:none}.product-card.sold-out::before{content:'SEASON OUT';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-15deg);font-size:36px;font-weight:900;color:red;text-shadow:2px 2px 0 rgba(255,255,255,.9),-2px -2px 0 rgba(255,255,255,.9),2px -2px 0 rgba(255,255,255,.9),-2px 2px 0 rgba(255,255,255,.9),0 0 15px rgba(255,0,0,.5);z-index:100;white-space:nowrap}.product-badge{position:absolute;top:8px;right:8px;padding:5px 10px;border-radius:12px;font-size:11px;font-weight:600;z-index:10}.badge-best{background:linear-gradient(135deg,var(--gold),#c5a028);color:#fff;border:2px solid var(--gold);box-shadow:0 2px 8px rgba(218,165,32,.4)}.badge-new{background:linear-gradient(135deg,var(--terracotta),#B87A5A);color:#fff;box-shadow:0 2px 8px rgba(193,123,92,.4)}.product-header{background:linear-gradient(135deg,var(--warm-beige),var(--light-beige));padding:12px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--shadow)}.product-icon{font-size:28px}.product-info{flex:1;text-align:left}.product-name{font-size:14px;font-weight:600;color:var(--medium-brown);line-height:1.3;margin-bottom:3px}.product-description{font-size:11px;color:#666;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.product-body{padding:12px}.product-options{display:flex;flex-direction:column;gap:6px}.option-row{display:flex;justify-content:space-between;align-items:center;padding:8px 10px;background:var(--cream-white);border-radius:6px;cursor:pointer;transition:all .2s;border:2px solid transparent}.option-row:hover,.option-row.selected{background:var(--light-beige);border-color:var(--caramel-brown)}.option-label{font-size:12px;font-weight:500}.option-price{font-size:14px;font-weight:700;color:var(--deep-brown)}.add-to-cart-btn{width:100%;margin-top:8px;padding:12px;background:linear-gradient(135deg,var(--dark-caramel),var(--caramel-brown));color:#fff;border:none;border-radius:6px;font-size:13px;font-weight:600;cursor:pointer;transition:all .3s}.add-to-cart-btn:disabled{background:#ccc;cursor:not-allowed}.cart-btn{position:fixed;bottom:20px;right:20px;width:60px;height:60px;background:linear-gradient(135deg,var(--caramel-brown),var(--dark-caramel));color:#fff;border:none;border-radius:50%;font-size:24px;cursor:pointer;box-shadow:0 4px 15px var(--shadow);z-index:999;display:flex;align-items:center;justify-content:center}.cart-count{position:absolute;top:-5px;right:-5px;background:red;color:#fff;border-radius:50%;min-width:24px;height:24px;padding:0 6px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;box-shadow:0 2px 8px rgba(255,68,68,.4)}.overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:999;display:none}.overlay.active{display:block}.cart-sidebar{position:fixed;right:-100%;top:0;width:90%;max-width:400px;height:100vh;background:#fff;box-shadow:-5px 0 25px var(--shadow);transition:right .3s;z-index:1000;display:flex;flex-direction:column}.cart-sidebar.active{right:0}.cart-header{padding:20px;background:linear-gradient(135deg,var(--dark-caramel),var(--caramel-brown));color:#fff;display:flex;justify-content:space-between;align-items:center}.cart-header h2{font-size:20px}.close-btn{background:0 0;border:none;color:#fff;font-size:28px;cursor:pointer;padding:0;width:32px;height:32px;display:flex;align-items:center;justify-content:center}.cart-body{flex:1;overflow-y:auto;padding:20px}.empty-cart{text-align:center;padding:60px 20px;color:#999}.empty-cart p:first-child{font-size:48px;margin-bottom:10px}.cart-item{background:#fffaf5;border-radius:10px;padding:15px;margin-bottom:15px;border:1px solid rgba(196,30,58,.1)}.cart-item-header{display:flex;justify-content:space-between;margin-bottom:8px}.cart-item-name{font-size:14px;font-weight:600;flex:1;padding-right:10px}.remove-btn{background:red;color:#fff;border:none;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px}.cart-item-details{display:flex;justify-content:space-between;font-size:13px;color:#666}.cart-item-price{font-size:16px;font-weight:700;color:var(--caramel-brown)}.cart-item-quantity{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin-top:10px}.quantity-btn{background:var(--caramel-brown);color:#fff;border:none;border-radius:6px;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;font-weight:600}.quantity-value{font-size:15px;font-weight:600;min-width:30px;text-align:center}.shipping-info{padding:20px;background:#fff9f0;border:2px solid var(--gold);border-radius:12px;margin:0 20px 20px}.shipping-title{font-size:16px;font-weight:700;color:var(--caramel-brown);margin-bottom:12px}.form-group{margin-bottom:10px}.form-input,.form-textarea{width:100%;padding:12px;border:2px solid rgba(218,165,32,.3);border-radius:8px;font-size:14px;font-family:'Noto Sans KR',sans-serif}.radio-group{display:flex;flex-direction:column;gap:8px}.radio-label{display:flex;align-items:center;padding:10px;border:2px solid rgba(218,165,32,.3);border-radius:8px;cursor:pointer;background:#fff}.radio-label input{margin-right:10px}.cart-summary{padding:20px;background:#fff;border-top:2px solid var(--light-beige)}.summary-row{display:flex;justify-content:space-between;padding:8px 0;font-size:15px}.summary-total{display:flex;justify-content:space-between;font-size:18px;font-weight:700;padding:10px 0;border-top:2px solid var(--caramel-brown);margin-top:10px}.total-price{font-size:24px;color:var(--caramel-brown);font-weight:700}.checkout-btn{width:100%;padding:16px;background:linear-gradient(135deg,var(--dark-caramel),var(--caramel-brown));color:#fff;border:2px solid var(--caramel-brown);border-radius:10px;font-size:18px;font-weight:600;cursor:pointer;box-shadow:0 4px 15px var(--shadow);margin-bottom:10px}.payment-info{text-align:center;font-size:13px;color:#666}.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:2000;padding:20px}.modal.active{display:flex}.modal-content{background:#fff;border-radius:20px;padding:30px;max-width:500px;width:100%;max-height:90vh;overflow-y:auto;position:relative}.modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.modal-close{background:0 0;border:none;font-size:28px;color:#999;cursor:pointer;width:32px;height:32px}.modal-body{margin-bottom:20px}.order-details-box{background:#fffaf5;border:2px solid var(--gold);border-radius:12px;padding:20px;margin-bottom:20px;max-height:400px;overflow-y:auto}.order-text{font-family:'Noto Sans KR',monospace;font-size:13px;line-height:1.8;white-space:pre-wrap;word-break:break-word;margin:0}.copy-btn{width:100%;padding:20px;background:linear-gradient(135deg,#07C160,#06AE56);color:#fff;border:none;border-radius:12px;font-size:18px;font-weight:700;cursor:pointer;margin-bottom:15px;box-shadow:0 6px 20px rgba(7,193,96,.4)}.wechat-guide{text-align:center;font-size:13px;color:#666;margin-bottom:20px;line-height:1.8}.wechat-guide strong{color:#07C160;font-weight:700}.modal-confirm-btn{width:100%;padding:14px;background:#f5f5f5;color:#666;border:2px solid #ddd;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer}.footer{background:linear-gradient(135deg,var(--caramel-brown),var(--dark-caramel));color:var(--cream-white);text-align:center;padding:25px 20px;margin-top:40px}.footer p{font-size:15px;font-weight:500;margin-bottom:8px}@media (max-width:768px){.product-card.sold-out::before{font-size:28px}}</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>☕ David's Coffee - 원두 & 드립백 주문</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<div class="container">
-<header class="header">
-<h1 class="logo">☕ David's Coffee</h1>
-<p class="subtitle">신선한 원두와 드립백을 만나보세요</p>
-</header>
-<div class="tabs">
-<button class="tab-btn active" onclick="switchTab('beans')">☕ 원두</button>
-<button class="tab-btn" onclick="switchTab('drip')">📦 드립백</button>
-</div>
-<section id="beans-section" class="products-section active">
-<div class="products-grid" id="beansProducts"></div>
-</section>
-<section id="drip-section" class="products-section">
-<div class="products-grid" id="dripProducts"></div>
-</section>
-</div>
-<button class="cart-btn" onclick="toggleCart()">🛒 <span class="cart-count" id="cartCount">0</span></button>
-<div class="overlay" id="overlay" onclick="toggleCart()"></div>
-<div class="cart-sidebar" id="cartSidebar">
-<div class="cart-header">
-<h2>🛒 장바구니</h2>
-<button class="close-btn" onclick="toggleCart()">×</button>
-</div>
-<div class="cart-body" id="cartItems">
-<div class="empty-cart"><p>🛒</p><p>장바구니가 비어있습니다</p></div>
-</div>
-<div class="shipping-info">
-<h3 class="shipping-title">📦 배송 정보</h3>
-<div class="form-group"><input type="text" id="shippingName" placeholder="이름" class="form-input"></div>
-<div class="form-group"><input type="tel" id="shippingPhone" placeholder="연락처" class="form-input"></div>
-<div class="form-group">
-<div class="radio-group">
-<label class="radio-label"><input type="radio" name="shippingRegion" value="shanghai" checked onchange="updateShippingFee()"><span>상하이 지역</span></label>
-<label class="radio-label"><input type="radio" name="shippingRegion" value="other" onchange="updateShippingFee()"><span>기타 지역</span></label>
-</div>
-</div>
-<div class="form-group"><textarea id="shippingAddress" placeholder="상세 주소" class="form-textarea" rows="2"></textarea></div>
-</div>
-<div class="cart-summary">
-<div class="summary-row"><span>상품 금액</span><span id="productAmount">¥0</span></div>
-<div class="summary-row"><span>배송비</span><span id="shippingFee">+6 RMB</span></div>
-<div class="summary-total"><span>총 결제 금액</span><span class="total-price" id="totalPrice">¥0</span></div>
-<button class="checkout-btn" onclick="showPaymentModal()">📋 주문 내역 복사하기</button>
-<div class="payment-info">💬 복사 후 위챗으로 보내주세요</div>
-</div>
-</div>
-<div class="modal" id="orderModal">
-<div class="modal-content">
-<div class="modal-header"><h2>✅ 주문 내역</h2><button class="modal-close" onclick="closeOrderModal()">×</button></div>
-<div class="modal-body">
-<div id="orderDetailsBox" class="order-details-box"></div>
-<button class="copy-btn" onclick="copyOrderDetails()">📋 클립보드에 복사</button>
-<div class="wechat-guide"><p>💬 위챗으로 돌아가서</p><p>채팅창에 <strong>붙여넣기</strong> 해주세요</p></div>
-</div>
-<div class="modal-footer"><button class="modal-confirm-btn" onclick="confirmOrder()">확인</button></div>
-</div>
-</div>
-<footer class="footer">
-<p>📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8eeaeff8e7eafdd1ede1e8e8ebebcee1fbfae2e1e1e5a0ede1e3">[email&#160;protected]</a></p>
-<p>🎁 200위안 이상 무료배송</p>
-<p>💰 위챗 송금 결제</p>
-</footer>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-const productsData={beans:[{id:'bean-14',name:'에티오피아 벤치 마지 게이샤 G1',icon:'💎',badge:'new',description:'섬세한 재스민 꽃향과 복숭아의 달콤함이 어우러진 우아한 풍미',options:[{size:'100g',price:60},{size:'200g',price:100}]},{id:'bean-15',name:'에티오피아 예가체프 반코 고티티 G1',icon:'🌸',badge:'new',description:'밝은 베리향과 은은한 꽃향이 조화를 이루는 부드러운 산미',options:[{size:'100g',price:60},{size:'200g',price:100}]},{id:'bean-16',name:'온두라스 오팔라카 SHG',icon:'☕',badge:'new',description:'고소한 견과류와 밀크초콜릿의 부드럽고 균형잡힌 맛',options:[{size:'100g',price:50},{size:'200g',price:80}]},{id:'bean-2',name:'킹스블랜드 No.2',icon:'👑',badge:'best',description:'부드러운 초콜릿과 캐러멜의 달콤함이 균형있게 어우러진 블랜드',options:[{size:'100g',price:40},{size:'200g',price:70}]},{id:'bean-5',name:'인도네시아 가요 만델링 G1 SC19',icon:'🏝️',badge:'best',description:'깊은 흙향과 다크초콜릿의 묵직한 바디감이 느껴지는 진한 풍미',options:[{size:'100g',price:55},{size:'200g',price:90}]},{id:'bean-6',name:'킹스블랜드 No.1',icon:'👑',badge:null,description:'고소한 견과류와 다크초콜릿, 카라멜의 조화로운 블랜드',options:[{size:'100g',price:40},{size:'200g',price:70}]},{id:'bean-7',name:'콜롬비아 후일라 산 어거스틴 수프리모',icon:'☕',badge:null,description:'바닐라와 꿀의 달콤함에 부드러운 초콜릿이 감도는 균형잡힌 풍미',options:[{size:'100g',price:45},{size:'200g',price:75}]},{id:'bean-9',name:'케냐 니에리 스카 AA',icon:'🦁',badge:null,description:'블랙커런트와 체리의 생동감 있는 산미에 와인향이 감도는 풍부한 풍미',options:[{size:'100g',price:50},{size:'200g',price:80}]},{id:'bean-8',name:'코스타리카 센트럴밸리 뜨레스 누베스 SHB',icon:'☁️',badge:null,description:'시트러스의 상큼함과 꿀의 단맛이 어우러진 깔끔한 뒷맛',options:[{size:'100g',price:50},{size:'200g',price:80}]},{id:'bean-11',name:'콜롬비아 슈가케인 디카페인',icon:'🌾',badge:null,description:'은은한 단맛과 부드러운 견과류 향이 느껴지는 편안한 디카페인',options:[{size:'100g',price:55},{size:'200g',price:85}]},{id:'bean-12',name:'케냐 엠부 AB TOP',icon:'🦁',badge:null,description:'베리의 상큼함과 홍차의 깊이가 어우러진 복합적인 풍미',options:[{size:'100g',price:55},{size:'200g',price:90}]},{id:'bean-4',name:'파나마 볼칸 바루 팔로마 SHB',icon:'🌺',badge:null,description:'밝은 시트러스와 재스민 꽃향이 어우러진 산뜻하고 우아한 맛',options:[{size:'100g',price:60},{size:'200g',price:100}]},{id:'bean-13',name:'콜롬비아 네바다 코코넛 버터 무산소발효',icon:'🥥',badge:null,description:'크리미한 코코넛과 버터의 달콤함에 바닐라 향이 감도는 디저트 같은 풍미',options:[{size:'100g',price:70},{size:'200g',price:130}]},{id:'bean-1',name:'에티오피아 젤라나 게이샤 G1',icon:'🌟',badge:null,soldOut:true,description:'플로럴한 향과 깔끔한 산미, 베르가못의 우아함',options:[{size:'200g',price:90,originalPrice:100}]},{id:'bean-3',name:'에티오피아 구지 아돌라 G1 Winey Natural',icon:'🍷',badge:null,soldOut:true,description:'와인같은 깊은 풍미와 베리류의 달콤함',options:[{size:'100g',price:50},{size:'200g',price:80}]},{id:'bean-10',name:'브라질 세하도 바우 팜',icon:'🌳',badge:null,soldOut:true,description:'고소한 넛향과 초콜릿, 부드러운 마무리',options:[{size:'100g',price:50},{size:'200g',price:80}]}],drip:[{id:'drip-1',name:'5가지 & 8가지 & 10가지 맛 선물세트 (랜덤)',icon:'🎁',badge:'best',description:'무작위로 선택된 5가지 맛 or 8가지 맛 or 10가지 맛 드립백으로 구성',options:[{size:'5개/박스',price:50},{size:'8개/박스',price:80},{size:'10개/박스',price:100}]},{id:'drip-2-kings',name:'킹스블랜드 No.2',icon:'👑',badge:'best',description:'부드러운 초콜릿과 캐러멜의 달콤함이 균형있게 어우러진 블랜드',options:[{size:'5개/박스',price:40},{size:'8개/박스',price:70}]},{id:'drip-14',name:'에티오피아 벤치 마지 게이샤 G1',icon:'💎',badge:'new',description:'섬세한 재스민 꽃향과 복숭아의 달콤함이 어우러진 우아한 풍미',options:[{size:'5개/박스',price:60},{size:'8개/박스',price:90}]},{id:'drip-15',name:'에티오피아 예가체프 반코 고티티 G1',icon:'🌸',badge:'new',description:'밝은 베리향과 은은한 꽃향이 조화를 이루는 부드러운 산미',options:[{size:'5개/박스',price:60},{size:'8개/박스',price:90}]},{id:'drip-16',name:'온두라스 오팔라카 SHG',icon:'☕',badge:'new',description:'고소한 견과류와 밀크초콜릿의 부드럽고 균형잡힌 맛',options:[{size:'5개/박스',price:50},{size:'8개/박스',price:80}]},{id:'drip-6',name:'킹스블랜드 No.1',icon:'👑',badge:null,description:'고소한 견과류와 다크초콜릿, 카라멜의 조화로운 블랜드',options:[{size:'5개/박스',price:40},{size:'8개/박스',price:70}]},{id:'drip-7',name:'콜롬비아 후일라 산 어거스틴 수프리모',icon:'☕',badge:null,description:'바닐라와 꿀의 달콤함에 부드러운 초콜릿이 감도는 균형잡힌 풍미',options:[{size:'5개/박스',price:50},{size:'8개/박스',price:70}]},{id:'drip-9',name:'케냐 니에리 스카 AA',icon:'🦁',badge:null,description:'블랙커런트와 체리의 생동감 있는 산미에 와인향이 감도는 풍부한 풍미',options:[{size:'5개/박스',price:50},{size:'8개/박스',price:80}]},{id:'drip-8',name:'코스타리카 센트럴밸리 뜨레스 누베스 SHB',icon:'☁️',badge:null,description:'시트러스의 상큼함과 꿀의 단맛이 어우러진 깔끔한 뒷맛',options:[{size:'5개/박스',price:50},{size:'8개/박스',price:80}]},{id:'drip-11',name:'콜롬비아 슈가케인 디카페인',icon:'🌾',badge:null,description:'은은한 단맛과 부드러운 견과류 향이 느껴지는 편안한 디카페인',options:[{size:'5개/박스',price:50},{size:'8개/박스',price:80}]},{id:'drip-5',name:'인도네시아 가요 만델링 G1 SC19',icon:'🏝️',badge:null,description:'깊은 흙향과 다크초콜릿의 묵직한 바디감이 느껴지는 진한 풍미',options:[{size:'5개/박스',price:55},{size:'8개/박스',price:90}]},{id:'drip-12',name:'케냐 엠부 AB TOP',icon:'🦁',badge:null,description:'베리의 상큼함과 홍차의 깊이가 어우러진 복합적인 풍미',options:[{size:'5개/박스',price:55},{size:'8개/박스',price:85}]},{id:'drip-4',name:'파나마 볼칸 바루 팔로마 SHB',icon:'🌺',badge:null,description:'밝은 시트러스와 재스민 꽃향이 어우러진 산뜻하고 우아한 맛',options:[{size:'5개/박스',price:60},{size:'8개/박스',price:90}]},{id:'drip-13',name:'콜롬비아 네바다 코코넛 버터 무산소발효',icon:'🥥',badge:null,description:'크리미한 코코넛과 버터의 달콤함에 바닐라 향이 감도는 디저트 같은 풍미',options:[{size:'5개/박스',price:65},{size:'8개/박스',price:100}]},{id:'drip-3',name:'에티오피아 젤라나 게이샤 G1',icon:'🌟',badge:null,soldOut:true,description:'플로럴한 향과 깔끔한 산미, 베르가못의 우아함',options:[{size:'5개/박스',price:60},{size:'8개/박스',price:90}]},{id:'drip-2',name:'에티오피아 구지 아돌라 G1',icon:'🍷',badge:null,soldOut:true,description:'와인같은 깊은 풍미와 베리류의 달콤함',options:[{size:'5개/박스',price:50},{size:'8개/박스',price:80}]},{id:'drip-10',name:'브라질 세하도 바우 팜',icon:'🌳',badge:null,soldOut:true,description:'고소한 넛향과 초콜릿, 부드러운 마무리',options:[{size:'5개/박스',price:50},{size:'8개/박스',price:80}]}]};let cart=[];const selectedOptions={};function switchTab(t){document.querySelectorAll('.tab-btn').forEach(e=>e.classList.remove('active'));const e='beans'===t?document.querySelector('.tab-btn[onclick*="beans"]'):document.querySelector('.tab-btn[onclick*="drip"]');e&&e.classList.add('active'),document.querySelectorAll('.products-section').forEach(e=>e.classList.remove('active')),'beans'===t?document.getElementById('beans-section').classList.add('active'):'drip'===t&&document.getElementById('drip-section').classList.add('active')}function renderProducts(){document.getElementById('beansProducts').innerHTML=productsData.beans.map(e=>createProductCard(e,'beans')).join(''),document.getElementById('dripProducts').innerHTML=productsData.drip.map(e=>createProductCard(e,'drip')).join('')}function createProductCard(e,t){const s=!0===e.soldOut,o=s?'sold-out':'';let n='';if(s)n='<div class="product-badge badge-soldout">SEASON OUT</div>';else{const s=[];e.badge&&s.push('<div class="product-badge badge-'+e.badge+'">'+(('best'===e.badge?'BEST':'new'===e.badge?'NEW':e.badge)+'</div>')),n=s.join('')}const d=e.options.map((e,o)=>{let n='¥'+e.price;return e.originalPrice&&(n='<span class="original-price">¥'+e.originalPrice+'</span><span class="sale-price">¥'+e.price+'</span>'),'<div class="option-row" data-product-id="'+t+'-'+o+'" onclick="'+(s?'':'selectOption(\''+t+'\','+o+')')+'" '+('<span class="option-label">'+e.size+'</span><span class="option-price">'+n+'</span></div>')}).join('');return'<div class="product-card '+o+'">'+n+'<div class="product-header"><div class="product-icon">'+e.icon+'</div><div class="product-info"><div class="product-name">'+e.name+'</div><div class="product-description">'+e.description+'</div></div></div><div class="product-body"><div class="product-options">'+d+'</div><button class="add-to-cart-btn" id="add-btn-'+t+'" onclick="'+(s?'':'addProductToCart(\''+t+'\')')+'" disabled>'+(s?'SEASON OUT':'옵션을 선택하세요')+'</button></div></div>'}function selectOption(e,t){document.querySelectorAll(`[data-product-id^="${e}"]`).forEach(e=>e.classList.remove('selected')),document.querySelector(`[data-product-id="${e}-${t}"]`).classList.add('selected'),selectedOptions[e]=t;const s=document.getElementById('add-btn-'+e);s.disabled=!1,s.textContent='담기'}function addProductToCart(e){const t=selectedOptions[e];if(null==t)return showNotification('옵션을 선택해주세요');const s='beans'===e.startsWith('bean')?productsData.beans.find(t=>t.id===e):productsData.drip.find(t=>t.id===e);if(!s)return;const o=s.options[t];addToCart(e,s.name,o.size,o.price,'beans'===e.startsWith('bean')?'beans':'drip'),document.querySelectorAll(`[data-product-id^="${e}"]`).forEach(e=>e.classList.remove('selected')),delete selectedOptions[e];const n=document.getElementById('add-btn-'+e);n.disabled=!0,n.textContent='옵션을 선택하세요'}function addToCart(e,t,s,o,n){const d=cart.findIndex(t=>t.id===e+'-'+s);-1===d?(cart.push({id:e+'-'+s,productId:e,name:t,option:s,price:o,quantity:1,type:n}),showNotification('장바구니에 담았습니다! 🛒')):(cart[d].quantity+=1,showNotification('수량이 추가되었습니다! 🛒')),updateCartUI(),saveCart()}function removeFromCart(e){cart=cart.filter(t=>t.id!==e),updateCartUI(),saveCart(),showNotification('장바구니에서 제거되었습니다.')}function calculateShippingFee(e){const t=document.getElementsByName('shippingRegion');let s='shanghai';for(const e of t)if(e.checked){s=e.value;break}if(e>=200)return{fee:0,region:s,isFree:!0};const o='shanghai'===s?6:10;return{fee:o,region:s,isFree:!1}}function updateShippingFee(){const e=cart.reduce((e,t)=>e+t.price*t.quantity,0),{fee:t,region:s,isFree:o}=calculateShippingFee(e),n=document.getElementById('shippingFee');o?n.innerHTML='<span style="color:#22c55e;font-weight:700">0 RMB (200위안 이상 무료배송 🎁)</span>':n.textContent='+'+t+' RMB ('+('shanghai'===s?'상하이 지역':'기타 지역')+')',document.getElementById('totalPrice').textContent='¥'+(e+t),document.getElementById('productAmount').textContent='¥'+e}function updateCartUI(){const e=document.getElementById('cartItems'),t=cart.reduce((e,t)=>e+t.quantity,0);document.getElementById('cartCount').textContent=t,e.innerHTML=0===cart.length?'<div class="empty-cart"><p>🛒</p><p>장바구니가 비어있습니다</p></div>':cart.map(e=>'<div class="cart-item"><div class="cart-item-header"><div class="cart-item-name">'+e.name+'</div><button class="remove-btn" onclick="removeFromCart(\''+e.id+'\')">×</button></div><div class="cart-item-details"><span class="cart-item-option">'+e.option+'</span><span class="cart-item-price">¥'+(e.price*e.quantity)+'</span></div><div class="cart-item-quantity"><button class="quantity-btn" onclick="decreaseQuantity(\''+e.id+'\')">-</button><span class="quantity-value">'+e.quantity+'</span><button class="quantity-btn" onclick="increaseQuantity(\''+e.id+'\')">+</button></div></div>').join(''),updateShippingFee()}function increaseQuantity(e){const t=cart.find(t=>t.id===e);t&&(t.quantity+=1,updateCartUI(),saveCart())}function decreaseQuantity(e){const t=cart.find(t=>t.id===e);t&&(t.quantity>1?(t.quantity-=1,updateCartUI(),saveCart()):confirm('상품을 장바구니에서 제거하시겠습니까?')&&removeFromCart(e))}function toggleCart(){document.getElementById('cartSidebar').classList.toggle('active'),document.getElementById('overlay').classList.toggle('active')}function saveCart(){localStorage.setItem('davidsCoffeeCart',JSON.stringify(cart))}function loadCart(){const e=localStorage.getItem('davidsCoffeeCart');e&&(cart=JSON.parse(e),updateCartUI())}function showNotification(e){const t=document.querySelector('.notification');t&&t.remove();const s=document.createElement('div');s.className='notification',s.textContent=e,s.style.cssText='position:fixed;top:80px;left:50%;transform:translateX(-50%);background:#4A3426;color:white;padding:12px 24px;border-radius:25px;font-size:14px;font-weight:600;z-index:10000;box-shadow:0 4px 15px rgba(0,0,0,.3)',document.body.appendChild(s),setTimeout(()=>{s.style.opacity='0',setTimeout(()=>s.remove(),300)},3e3)}function showPaymentModal(){if(0===cart.length)return showNotification('장바구니가 비어있습니다.');const e=document.getElementById('shippingName').value.trim(),t=document.getElementById('shippingPhone').value.trim(),s=document.getElementById('shippingAddress').value.trim();if(!e||!t||!s)return showNotification('모든 배송 정보를 입력해주세요.');const o=document.getElementsByName('shippingRegion');let n='shanghai';for(const e of o)if(e.checked){n=e.value;break}const d=generateOrderDetails(e,t,s,n);document.getElementById('orderDetailsBox').innerHTML='<pre class="order-text">'+d+'</pre>',document.getElementById('orderModal').classList.add('active');const r=document.getElementById('cartSidebar'),i=document.getElementById('overlay');r.classList.remove('active'),i.classList.remove('active')}function closeOrderModal(){document.getElementById('orderModal').classList.remove('active')}function copyOrderDetails(){const e=document.querySelector('.order-text').textContent;navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(e).then(()=>{showNotification('✅ 주문 내역이 복사되었습니다!')}).catch(()=>{fallbackCopyText(e)}):fallbackCopyText(e)}function fallbackCopyText(e){const t=document.createElement('textarea');t.value=e,t.style.position='fixed',t.style.left='-999999px',document.body.appendChild(t),t.select();try{document.execCommand('copy'),showNotification('✅ 주문 내역이 복사되었습니다!')}catch(e){showNotification('❌ 복사에 실패했습니다. 주문 내역을 직접 선택해서 복사해주세요.')}document.body.removeChild(t)}function confirmOrder(){cart=[],updateCartUI(),saveCart(),document.getElementById('shippingName').value='',document.getElementById('shippingPhone').value='',document.getElementById('shippingAddress').value='',document.querySelector('input[name="shippingRegion"][value="shanghai"]').checked=!0,closeOrderModal(),showNotification('🎉 주문이 접수되었습니다!')}function generateOrderDetails(e,t,s,o){const n=cart.reduce((e,t)=>e+t.price*t.quantity,0),{fee:d,isFree:r}=calculateShippingFee(n),i=n+d,c=(cart.reduce((e,t)=>e+t.quantity,0),new Date().toLocaleString('ko-KR',{year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit'})),a='shanghai'===o?'상하이 지역 (上海地区)':'기타 지역 (其他地区)';let l='=== David\'s Coffee 주문 내역 ===\n\n';return l+='주문 일시: '+c+'\n\n',l+='📦 배송 정보:\n',l+='이름: '+e+'\n',l+='연락처: '+t+'\n',l+='배송 지역: '+a+'\n',l+='상세 주소: '+s+'\n\n',l+='🛒 주문 상품:\n',l+='━━━━━━━━━━━━━━━━━━━━\n',cart.forEach((e,t)=>{const s=e.price*e.quantity;l+=`${t+1}. ${e.name}\n`,l+=`   용량/수량: ${e.option} × ${e.quantity}개\n`,l+=`   가격: ¥${e.price} × ${e.quantity} = ¥${s}\n\n`}),l+='💰 결제 금액:\n',l+='상품 금액: ¥'+n+'\n',l+=r?'배송비: 0 RMB (200위안 이상 무료배송)\n':'배송비: +'+d+' RMB ('+a+')\n',l+='──────────────────────\n',l+='총 결제 금액: ¥'+i+'\n\n',l+='💳 결제 방법: 위챗 송금\n',l+='📧 연락처: davids_coffee@outlook.com\n',l}document.addEventListener('DOMContentLoaded',()=>{renderProducts(),loadCart();const e=document.getElementById('orderModal');e.addEventListener('click',e=>{e.target===document.getElementById('orderModal')&&closeOrderModal()}),document.addEventListener('keydown',t=>{'Escape'===t.key&&(e.classList.contains('active')&&closeOrderModal(),document.getElementById('cartSidebar').classList.contains('active')&&toggleCart())})});
-</script>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="logo">☕ David's Coffee</h1>
+            <p class="subtitle">신선한 원두와 드립백을 만나보세요</p>
+        </header>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('beans')">
+                ☕ 원두
+            </button>
+            <button class="tab-btn" onclick="switchTab('drip')">
+                📦 드립백
+            </button>
+        </div>
+
+        <!-- Products Section - Beans -->
+        <section id="beans-section" class="products-section active">
+            <div class="products-grid" id="beansProducts">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Products Section - Drip -->
+        <section id="drip-section" class="products-section">
+            <div class="products-grid" id="dripProducts">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Cart Button (Fixed) -->
+    <button class="cart-btn" onclick="toggleCart()">
+        🛒
+        <span class="cart-count" id="cartCount">0</span>
+    </button>
+
+    <!-- Cart Sidebar Overlay -->
+    <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <!-- Cart Header -->
+        <div class="cart-header">
+            <h2>🛒 장바구니</h2>
+            <button class="close-btn" onclick="toggleCart()">×</button>
+        </div>
+
+        <!-- Cart Body (전체 스크롤 영역) -->
+        <div class="cart-body">
+            <!-- Cart Items -->
+            <div id="cartItems">
+                <div class="empty-cart">
+                    <p>🛒</p>
+                    <p>장바구니가 비어있습니다</p>
+                </div>
+            </div>
+
+            <!-- Shipping Information Form -->
+            <div class="shipping-info">
+                <h3 class="shipping-title">📦 배송 정보</h3>
+                
+                <div class="form-group">
+                    <input type="text" id="shippingName" placeholder="이름" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <input type="tel" id="shippingPhone" placeholder="연락처" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="shippingRegion" value="shanghai" checked onchange="updateShippingFee()">
+                            <span>상하이 지역</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="shippingRegion" value="other" onchange="updateShippingFee()">
+                            <span>기타 지역</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <textarea id="shippingAddress" placeholder="상세 주소" class="form-textarea" rows="2"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart Summary (고정 영역) -->
+        <div class="cart-summary">
+            <div class="summary-row">
+                <span>상품 금액</span>
+                <span id="productAmount">¥0</span>
+            </div>
+            <div class="summary-row">
+                <span>배송비</span>
+                <span id="shippingFee">+6 RMB</span>
+            </div>
+            <div class="summary-total">
+                <span>총 결제 금액</span>
+                <span class="total-price" id="totalPrice">¥0</span>
+            </div>
+            <button class="checkout-btn" onclick="showPaymentModal()">📋 주문 내역 복사하기</button>
+            <div class="payment-info">
+                💬 복사 후 위챗으로 보내주세요
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Modal -->
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>✅ 주문 내역</h2>
+                <button class="modal-close" onclick="closeOrderModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <div id="orderDetailsBox" class="order-details-box"></div>
+                <button class="copy-btn" onclick="copyOrderDetails()">📋 클립보드에 복사</button>
+                <div class="wechat-guide">
+                    <p>💬 위챗으로 돌아가서</p>
+                    <p>채팅창에 <strong>붙여넣기</strong> 해주세요</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-confirm-btn" onclick="confirmOrder()">확인</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>📧 david_han76@outlook.com</p>
+        <p>🎁 200위안 이상 무료배송</p>
+        <p>💰 위챗 송금 결제</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/data.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
