@@ -1,6 +1,17 @@
 const productsData = {
     beans: [
-        // ===== NEW 제품 (3종) =====
+        // ===== NEW 제품 (4종) =====
+        {
+            id: 'bean-18',
+            name: '르완다 냐마셰케 인조부 레드버번 A Washed',
+            icon: '🌿',
+            badge: 'new',
+            description: '귤꽃의 화사한 향과 상큼한 감귤의 단맛에 더한 고소한 아몬드 초콜릿의 여운 | RFA 인증',
+            options: [
+                { size: '100g', price: 50 },
+                { size: '200g', price: 80 }
+            ]
+        },
         {
             id: 'bean-17',
             name: '에티오피아 젤라나 게이샤 G1 와인 내추럴',
@@ -125,17 +136,6 @@ const productsData = {
             ]
         },
         {
-            id: 'bean-18',
-            name: '르완다 냐마셰케 인조부 레드버번 A Washed',
-            icon: '🌿',
-            badge: null,
-            description: '귤꽃의 화사한 향과 상큼한 감귤의 단맛에 더한 고소한 아몬드 초콜릿의 여운 | RFA 인증',
-            options: [
-                { size: '100g', price: 50 },
-                { size: '200g', price: 80 }
-            ]
-        },
-        {
             id: 'bean-13',
             name: '콜롬비아 네바다 코코넛 버터 무산소발효',
             icon: '🥥',
@@ -211,7 +211,18 @@ const productsData = {
                 { size: '10개 입/박스', price: 100 }
             ]
         },
-        // ===== NEW 제품 (3종) =====
+        // ===== NEW 제품 (4종) =====
+        {
+            id: 'drip-19',
+            name: '르완다 냐마셰케 인조부 레드버번 A Washed',
+            icon: '🌿',
+            badge: 'new',
+            description: '귤꽃의 화사한 향과 상큼한 감귤의 단맛에 더한 고소한 아몬드 초콜릿의 여운 | RFA 인증',
+            options: [
+                { size: '5개 입/박스', price: 50 },
+                { size: '8개 입/박스', price: 80 }
+            ]
+        },
         {
             id: 'drip-18',
             name: '에티오피아 젤라나 게이샤 G1 와인 내추럴',
@@ -333,17 +344,6 @@ const productsData = {
             options: [
                 { size: '5개 입/박스', price: 60 },
                 { size: '8개 입/박스', price: 90 }
-            ]
-        },
-        {
-            id: 'drip-19',
-            name: '르완다 냐마셰케 인조부 레드버번 A Washed',
-            icon: '🌿',
-            badge: null,
-            description: '귤꽃의 화사한 향과 상큼한 감귤의 단맛에 더한 고소한 아몬드 초콜릿의 여운 | RFA 인증',
-            options: [
-                { size: '5개 입/박스', price: 50 },
-                { size: '8개 입/박스', price: 80 }
             ]
         },
         {
