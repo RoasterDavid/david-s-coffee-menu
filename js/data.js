@@ -45,6 +45,7 @@ const productsData = {
                 { size: '200g', price: 80 }
             ]
         },
+
         // ===== BEST 제품 (2종) =====
         {
             id: 'bean-2',
@@ -59,7 +60,7 @@ const productsData = {
         },
         {
             id: 'bean-5',
-            name: '인도네시아 가요 만델링 G1 SC19',
+            name: '인도네시아 수마트라 골든 만델링 G1 SC19',
             icon: '🏝️',
             badge: 'best',
             description: '깊은 흙향과 다크초콜릿의 묵직한 바디감이 느껴지는 진한 풍미',
@@ -68,6 +69,7 @@ const productsData = {
                 { size: '200g', price: 90 }
             ]
         },
+
         // ===== 일반 제품 =====
         {
             id: 'bean-6',
@@ -81,14 +83,25 @@ const productsData = {
             ]
         },
         {
+            id: 'bean-19',
+            name: '스타벅스 마니아를 감동시킨 킹스블랜드 No.4',
+            icon: '👑',
+            badge: null,
+            description: '깊은 단맛과 부드러운 견과류 바디를 바탕으로 산뜻하고 깔끔한 마무리가 돋보이는 블렌드',
+            options: [
+                { size: '100g', price: 40 },
+                { size: '200g', price: 70 }
+            ]
+        },
+        {
             id: 'bean-7',
-            name: '콜롬비아 후일라 산 어거스틴 수프리모',
+            name: '콜롬비아 후일라 수프리모',
             icon: '☕',
             badge: null,
             description: '바닐라와 꿀의 달콤함에 부드러운 초콜릿이 감도는 균형잡힌 풍미',
             options: [
-                { size: '100g', price: 45 },
-                { size: '200g', price: 75 }
+                { size: '100g', price: 50 },
+                { size: '200g', price: 80 }
             ]
         },
         {
@@ -114,17 +127,6 @@ const productsData = {
             ]
         },
         {
-            id: 'bean-12',
-            name: '케냐 엠부 AB TOP',
-            icon: '🦁',
-            badge: null,
-            description: '베리의 상큼함과 홍차의 깊이가 어우러진 복합적인 풍미',
-            options: [
-                { size: '100g', price: 55 },
-                { size: '200g', price: 90 }
-            ]
-        },
-        {
             id: 'bean-4',
             name: '파나마 볼칸 바루 팔로마 SHB',
             icon: '🌺',
@@ -133,6 +135,17 @@ const productsData = {
             options: [
                 { size: '100g', price: 60 },
                 { size: '200g', price: 100 }
+            ]
+        },
+        {
+            id: 'bean-20',
+            name: '온두라스 파드리노 모라도 3.0 위스키 배럴',
+            icon: '🥃',
+            badge: null,
+            description: '버번 위스키 아로마와 숙성 오크의 깊이에 바닐라의 부드러움, 살구·오렌지·꿀의 달콤함이 어우러진 풍미',
+            options: [
+                { size: '100g', price: 70 },
+                { size: '200g', price: 130 }
             ]
         },
         {
@@ -146,7 +159,20 @@ const productsData = {
                 { size: '200g', price: 130 }
             ]
         },
+
         // ===== SEASON OUT =====
+        {
+            id: 'bean-12',
+            name: '케냐 엠부 AB TOP',
+            icon: '🦁',
+            badge: 'season-out',
+            description: '베리의 상큼함과 홍차의 깊이가 어우러진 복합적인 풍미',
+            options: [
+                { size: '100g', price: 55 },
+                { size: '200g', price: 90 }
+            ],
+            soldOut: true
+        },
         {
             id: 'bean-9',
             name: '케냐 니에리 스카 AA',
@@ -198,7 +224,7 @@ const productsData = {
     ],
 
     drip: [
-        // ===== 선물세트 - 맨 위 =====
+        // ===== 선물세트 - 맨 위 유지 =====
         {
             id: 'drip-17',
             name: '5가지 & 8가지 & 10가지 맛 선물세트 (랜덤)',
@@ -211,6 +237,7 @@ const productsData = {
                 { size: '10개 입/박스', price: 100 }
             ]
         },
+
         // ===== NEW 제품 (4종) =====
         {
             id: 'drip-19',
@@ -256,6 +283,7 @@ const productsData = {
                 { size: '8개 입/박스', price: 80 }
             ]
         },
+
         // ===== BEST 제품 (2종) =====
         {
             id: 'drip-2',
@@ -270,7 +298,7 @@ const productsData = {
         },
         {
             id: 'drip-5',
-            name: '인도네시아 가요 만델링 G1 SC19',
+            name: '인도네시아 수마트라 골든 만델링 G1 SC19',
             icon: '🏝️',
             badge: 'best',
             description: '깊은 흙향과 다크초콜릿의 묵직한 바디감이 느껴지는 진한 풍미',
@@ -279,6 +307,7 @@ const productsData = {
                 { size: '8개 입/박스', price: 90 }
             ]
         },
+
         // ===== 일반 제품 =====
         {
             id: 'drip-6',
@@ -292,14 +321,25 @@ const productsData = {
             ]
         },
         {
+            id: 'drip-21',
+            name: '스타벅스 마니아를 감동시킨 킹스블랜드 No.4',
+            icon: '👑',
+            badge: null,
+            description: '깊은 단맛과 부드러운 견과류 바디를 바탕으로 산뜻하고 깔끔한 마무리가 돋보이는 블렌드',
+            options: [
+                { size: '5개 입/박스', price: 40 },
+                { size: '8개 입/박스', price: 70 }
+            ]
+        },
+        {
             id: 'drip-7',
-            name: '콜롬비아 후일라 산 어거스틴 수프리모',
+            name: '콜롬비아 후일라 수프리모',
             icon: '☕',
             badge: null,
             description: '바닐라와 꿀의 달콤함에 부드러운 초콜릿이 감도는 균형잡힌 풍미',
             options: [
                 { size: '5개 입/박스', price: 50 },
-                { size: '8개 입/박스', price: 70 }
+                { size: '8개 입/박스', price: 80 }
             ]
         },
         {
@@ -325,17 +365,6 @@ const productsData = {
             ]
         },
         {
-            id: 'drip-12',
-            name: '케냐 엠부 AB TOP',
-            icon: '🦁',
-            badge: null,
-            description: '베리의 상큼함과 홍차의 깊이가 어우러진 복합적인 풍미',
-            options: [
-                { size: '5개 입/박스', price: 55 },
-                { size: '8개 입/박스', price: 90 }
-            ]
-        },
-        {
             id: 'drip-4',
             name: '파나마 볼칸 바루 팔로마 SHB',
             icon: '🌺',
@@ -344,6 +373,17 @@ const productsData = {
             options: [
                 { size: '5개 입/박스', price: 60 },
                 { size: '8개 입/박스', price: 90 }
+            ]
+        },
+        {
+            id: 'drip-20',
+            name: '온두라스 파드리노 모라도 3.0 위스키 배럴',
+            icon: '🥃',
+            badge: null,
+            description: '버번 위스키 아로마와 숙성 오크의 깊이에 바닐라의 부드러움, 살구·오렌지·꿀의 달콤함이 어우러진 풍미',
+            options: [
+                { size: '5개 입/박스', price: 65 },
+                { size: '8개 입/박스', price: 100 }
             ]
         },
         {
@@ -357,7 +397,20 @@ const productsData = {
                 { size: '8개 입/박스', price: 100 }
             ]
         },
+
         // ===== SEASON OUT =====
+        {
+            id: 'drip-12',
+            name: '케냐 엠부 AB TOP',
+            icon: '🦁',
+            badge: 'season-out',
+            description: '베리의 상큼함과 홍차의 깊이가 어우러진 복합적인 풍미',
+            options: [
+                { size: '5개 입/박스', price: 55 },
+                { size: '8개 입/박스', price: 90 }
+            ],
+            soldOut: true
+        },
         {
             id: 'drip-9',
             name: '케냐 니에리 스카 AA',
